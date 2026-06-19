@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Moussa Salman</title>
+<meta name="description" content="Contact Moussa Salman to enquire about acquiring a work, commissions, or exhibitions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<style>
+  #formNote{display:none;margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--accent)}
+  #formNote.show{display:block}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="name">Moussa Salman</span>
+      <span class="sub">Contemporary Artist</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="reviews.html">Art Reviews</a>
+      <a href="exhibitions.html">Exhibitions</a>
+      <a href="awards.html">Awards</a>
+      <a href="prints.html">Limited Editions</a>
+      <a href="contact.html" class="cta active">Contact</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="nav-scrim"></div>
+
+<section class="page-band">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's talk<br>about a work</h1>
+    <p class="lead">To acquire a piece, commission something new, or discuss an exhibition — write directly. I aim to reply within 24 hours.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <form id="contactForm">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cf-subject">Subject</label>
+          <input id="cf-subject" name="subject" type="text" placeholder="e.g. Enquiry about “Look at Me”">
+        </div>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send message <span class="arr">→</span></button>
+        <p id="formNote">Thank you — your message has been noted. I hope to respond within 24 hours.</p>
+      </form>
+    </div>
+
+    <div class="reveal">
+      <span class="eyebrow">Direct</span>
+      <div style="margin-top:18px">
+        <div class="contact-line"><span class="k">Email</span><a class="v" href="mailto:info@moussasalman.com">info@moussasalman.com</a></div>
+        <div class="contact-line"><span class="k">Studio</span><span class="v">Amsterdam, Netherlands</span></div>
+        <div class="contact-line"><span class="k">Instagram</span><a class="v" href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">@moussasalmanart</a></div>
+        <div class="contact-line"><span class="k">Facebook</span><a class="v" href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">MoussaSalmanArt</a></div>
+      </div>
+      <p class="body" style="margin-top:30px;color:var(--ink-soft)">Every work is offered as a signed, limited edition. Tell me which piece speaks to you and I'll share availability, sizes and shipping.</p>
+      <a href="prints.html" class="btn btn-ghost" style="margin-top:18px">Browse the collection <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="grid">
+      <div class="brandcol">
+        <div class="name">Moussa Salman</div>
+        <div class="sub">Egyptian / Dutch Contemporary Artist</div>
+        <p style="color:rgba(245,242,236,.6);font-size:14px;margin-top:20px;max-width:34ch">Abstract mixed media paintings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="biography.html">Biography</a>
+        <a href="reviews.html">Art Reviews</a>
+        <a href="exhibitions.html">Exhibitions &amp; Publications</a>
+        <a href="awards.html">Prizes &amp; Awards</a>
+        <a href="prints.html">Limited Edition Prints</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
+        <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr"></span> Moussa Salman. All rights reserved.</span>
+      <span>Amsterdam · Cairo</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
