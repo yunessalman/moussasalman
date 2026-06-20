@@ -1,33 +1,62 @@
 /* ===== Moussa Salman — shared site behaviour ===== */
 
 /* Artwork catalogue (title + year live in JS; images in /art) */
+/* ar = long side / short side, derived from each source image's pixels */
 window.ARTWORKS = [
-  {n:'01', t:'Look at Me',        y:2024},
-  {n:'02', t:'Nature Call',       y:2023},
-  {n:'03', t:'No Comment',        y:2024},
-  {n:'04', t:'Sea of Love',       y:2020},
-  {n:'05', t:'Magic of Nature',   y:2020},
-  {n:'06', t:'Shadows',           y:2020},
-  {n:'07', t:'Talk to Me',        y:2019},
-  {n:'08', t:'Horse Power',       y:2019},
-  {n:'09', t:'Refugees',          y:2019},
-  {n:'10', t:'Climate Change, We Are Not', y:2021},
-  {n:'11', t:'Snail',             y:2019},
-  {n:'12', t:'African Way',       y:2020},
-  {n:'13', t:'Free Like a Bird',  y:2021},
-  {n:'14', t:'Poverty',           y:2020},
-  {n:'15', t:'Psycho',            y:2019},
-  {n:'16', t:'Ant Queen',         y:2021},
-  {n:'17', t:'Just Confused',     y:2021},
-  {n:'18', t:'Lion Hunting',      y:2020},
-  {n:'19', t:'Magic Hair',        y:2019},
-  {n:'20', t:'The Clash',         y:2019},
-  {n:'21', t:'The Struggle',      y:2017},
-  {n:'22', t:'The Hurricane',     y:2020},
-  {n:'23', t:'The Fisherman',     y:2017},
-  {n:'24', t:'Stressed',          y:2018},
-  {n:'25', t:'A Sad Look',        y:2000},
+  {n:'01', t:'Look at Me',        y:2024, ar:1.000},
+  {n:'02', t:'Nature Call',       y:2023, ar:1.500},
+  {n:'03', t:'No Comment',        y:2024, ar:1.000},
+  {n:'04', t:'Sea of Love',       y:2020, ar:1.500},
+  {n:'05', t:'Magic of Nature',   y:2020, ar:1.333},
+  {n:'06', t:'Shadows',           y:2020, ar:1.333},
+  {n:'07', t:'Talk to Me',        y:2019, ar:1.333},
+  {n:'08', t:'Horse Power',       y:2019, ar:1.671},
+  {n:'09', t:'Refugees',          y:2019, ar:1.507},
+  {n:'10', t:'Climate Change, We Are Not', y:2021, ar:1.500},
+  {n:'11', t:'Snail',             y:2019, ar:1.499},
+  {n:'12', t:'African Way',       y:2020, ar:1.250},
+  {n:'13', t:'Free Like a Bird',  y:2021, ar:1.500},
+  {n:'14', t:'Poverty',           y:2020, ar:1.328},
+  {n:'15', t:'Psycho',            y:2019, ar:1.333},
+  {n:'16', t:'Ant Queen',         y:2021, ar:1.417},
+  {n:'17', t:'Just Confused',     y:2021, ar:1.417},
+  {n:'18', t:'Lion Hunting',      y:2020, ar:1.500},
+  {n:'19', t:'Magic Hair',        y:2019, ar:1.500},
+  {n:'20', t:'The Clash',         y:2019, ar:1.231},
+  {n:'21', t:'The Struggle',      y:2017, ar:1.207},
+  {n:'22', t:'The Hurricane',     y:2020, ar:1.500},
+  {n:'23', t:'The Fisherman',     y:2017, ar:1.238},
+  {n:'24', t:'Stressed',          y:2018, ar:1.000},
+  {n:'25', t:'A Sad Look',        y:2000, ar:2.171},
+  {n:'26', t:'The Birds',             y:2021, ar:1.250},
+  {n:'27', t:'Together All the Way',  y:2021, ar:1.333},
+  {n:'28', t:'The Last Kiss',         y:2021, ar:1.250},
+  {n:'29', t:'The Silent',            y:2023, ar:1.333},
+  {n:'30', t:'The Little Girl',       y:2021, ar:1.500},
+  {n:'31', t:'Worries',               y:2021, ar:1.231},
+  {n:'32', t:'It Is War',             y:2022, ar:1.328},
+  {n:'33', t:'Nature Attacks Back',   y:2020, ar:1.509},
+  {n:'34', t:'Sitting with Myself',   y:2019, ar:1.333},
+  {n:'35', t:'Stay Safe',             y:2020, ar:1.333},
+  {n:'36', t:'Alien Refugee',         y:2019, ar:1.333},
+  {n:'37', t:'Struggle',              y:2019, ar:1.333},
 ];
+
+/* 6 limited editions — fixed price ladder, shared by every work.
+   Short side (cm) is the base; long side = round(base * ar). */
+window.EDITION_BASES  = [40, 60, 80, 100, 120, 140];
+window.EDITION_PRICES = [4300, 6300, 9300, 12300, 14850, 19600];
+window.editionsFor = function(a){
+  return window.EDITION_BASES.map(function(b,i){
+    var short=b, long=Math.round(b*a.ar);
+    return {
+      i:i+1,
+      size:short+' \u00d7 '+long+' cm',
+      price:window.EDITION_PRICES[i]
+    };
+  });
+};
+window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
 
 (function(){
   /* ---- mobile menu ---- */
@@ -54,15 +83,17 @@ window.ARTWORKS = [
     els.forEach(function(e){io.observe(e);});
   }
 
-  /* ---- render full gallery grid (Limited Edition Prints) ---- */
+  /* ---- render full gallery grid (Limited Editions) ---- */
   function renderGallery(){
     var grid=document.getElementById('gallery');
     if(!grid)return;
     var html='';
     window.ARTWORKS.forEach(function(a,i){
+      var from=window.fmtUSD(window.EDITION_PRICES[0]);
       html+='<div class="item" data-i="'+i+'">'+
         '<img loading="lazy" src="art/'+a.n+'.jpg" alt="'+a.t+', '+a.y+' — Moussa Salman">'+
         '<div class="cap"><span class="t">'+a.t+'</span><span>'+a.y+'</span></div>'+
+        '<div class="price-tag"><span>6 editions</span><span>from '+from+'</span></div>'+
         '</div>';
     });
     grid.innerHTML=html;
@@ -73,8 +104,10 @@ window.ARTWORKS = [
     var lb=document.querySelector('.lb');
     if(!lb)return;
     var img=lb.querySelector('img'),
-        capT=lb.querySelector('.lb-cap .t'),
-        capY=lb.querySelector('.lb-cap .y'),
+        capT=lb.querySelector('.lb-cap .t, .lb-title .t'),
+        capY=lb.querySelector('.lb-cap .y, .lb-title .y'),
+        edBox=lb.querySelector('.lb-editions'),
+        enquire=lb.querySelector('.lb-enquire'),
         order=[],cur=0;
 
     function build(){
@@ -90,6 +123,19 @@ window.ARTWORKS = [
       img.alt=a.t+', '+a.y;
       if(capT)capT.textContent=a.t;
       if(capY)capY.textContent='— '+a.y;
+      if(edBox){
+        edBox.innerHTML=window.editionsFor(a).map(function(e){
+          var q='contact.html?work='+encodeURIComponent(a.t)+
+                '&edition='+encodeURIComponent(e.i+'/6')+
+                '&size='+encodeURIComponent(e.size)+
+                '&price='+encodeURIComponent(window.fmtUSD(e.price));
+          return '<div class="lb-ed"><span class="n">'+e.i+'/6</span>'+
+            '<span class="sz">'+e.size+'</span>'+
+            '<span class="pr">'+window.fmtUSD(e.price)+'</span>'+
+            '<a class="ed-inq" href="'+q+'">Inquire</a></div>';
+        }).join('');
+      }
+      if(enquire)enquire.href='contact.html?work='+encodeURIComponent(a.t);
     }
     function open(idx){build();show(idx);lb.classList.add('open');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');document.body.style.overflow='';}
