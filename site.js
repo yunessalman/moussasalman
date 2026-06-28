@@ -42,8 +42,8 @@ window.ARTWORKS = [
   {n:'37', t:'Struggle',              y:2019, ar:1.333},
 ];
 
-/* 6 limited editions — fixed price ladder, shared by every work.
-   Short side (cm) is the base; long side = round(base * ar). */
+/* 6 limited editions — fixed size ladder + price ladder, shared by every work.
+   Short side (cm) is the base; long side = round(base * aspect ratio). */
 window.EDITION_BASES  = [40, 60, 80, 100, 120, 140];
 window.EDITION_PRICES = [4300, 6300, 9300, 12300, 14850, 18500];
 window.editionsFor = function(a){
@@ -89,11 +89,13 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
     if(!grid)return;
     var html='';
     window.ARTWORKS.forEach(function(a,i){
-      var from=window.fmtUSD(window.EDITION_PRICES[0]);
+      var eds=window.editionsFor(a);
+      /* deterministic pick of one of the 6 editions, stable per painting */
+      var pick=eds[(parseInt(a.n,10)*7+3)%6];
       html+='<div class="item" data-i="'+i+'">'+
         '<img loading="lazy" src="art/'+a.n+'.jpg" alt="'+a.t+', '+a.y+' — Moussa Salman">'+
         '<div class="cap"><span class="t">'+a.t+'</span><span>'+a.y+'</span></div>'+
-        '<div class="price-tag"><span>6 editions</span><span>from '+from+'</span></div>'+
+        '<div class="price-tag"><span class="ed">Edition '+pick.i+'/6 · '+pick.size+'</span><span class="pr">'+window.fmtUSD(pick.price)+'</span></div>'+
         '</div>';
     });
     grid.innerHTML=html;
@@ -132,7 +134,7 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
           return '<div class="lb-ed"><span class="n">'+e.i+'/6</span>'+
             '<span class="sz">'+e.size+'</span>'+
             '<span class="pr">'+window.fmtUSD(e.price)+'</span>'+
-            '<a class="ed-inq" href="'+q+'">Inquire to buy</a></div>';
+            '<a class="ed-inq" href="'+q+'">Enquire to buy</a></div>';
         }).join('');
       }
       if(enquire)enquire.href='contact.html?work='+encodeURIComponent(a.t);

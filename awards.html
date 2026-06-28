@@ -17,6 +17,32 @@
     border:1px solid var(--line);border-radius:100px;padding:9px 16px;color:var(--ink-soft);transition:border-color .25s,color .25s}
   .contents a:hover{border-color:var(--ink);color:var(--ink)}
   .row .ti em{font-style:italic}
+  .cat .row{grid-template-columns:1fr auto}
+  @media(max-width:600px){.cat .row{grid-template-columns:1fr}}
+  /* clickable certificate row */
+  .row.has-cert{cursor:pointer;transition:background .25s}
+  .row.has-cert:hover{background:var(--paper-3)}
+  .row.has-cert .ti{display:inline-flex;align-items:baseline;gap:10px}
+  .row.has-cert .view{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  /* certificate lightbox */
+  .cert-lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(27,24,19,.86);padding:clamp(20px,5vw,64px);opacity:0;transition:opacity .3s}
+  .cert-lb.open{display:flex;opacity:1}
+  .cert-lb img{max-width:100%;max-height:100%;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);background:#fff}
+  .cert-lb .cert-close{position:absolute;top:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);
+    width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,242,236,.4);background:transparent;
+    color:#F5F2EC;font-size:22px;line-height:1;cursor:pointer;transition:background .25s,border-color .25s}
+  .cert-lb .cert-close:hover{background:rgba(245,242,236,.12);border-color:#F5F2EC}
+  .cert-lb .cert-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(245,242,236,.4);background:rgba(27,24,19,.4);color:#F5F2EC;font-size:24px;line-height:1;
+    cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .25s,border-color .25s}
+  .cert-lb .cert-nav:hover{background:rgba(245,242,236,.16);border-color:#F5F2EC}
+  .cert-lb .cert-prev{left:clamp(12px,3vw,28px)}
+  .cert-lb .cert-next{right:clamp(12px,3vw,28px)}
+  .cert-lb.is-gallery .cert-nav{display:flex}
+  .cert-lb .cert-count{position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:rgba(245,242,236,.8);display:none}
+  .cert-lb.is-gallery .cert-count{display:block}
 </style>
 </head>
 <body>
@@ -30,10 +56,12 @@
     <nav class="nav" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="limitededitions.html">Limited Editions</a>
+      <a href="originals.html">Originals</a>
       <a href="biography.html">Biography</a>
       <a href="reviews.html">Art Reviews</a>
-      <a href="exhibitions.html">Exhibitions</a>
+      <a href="exhibitions.html">Exhibitions &amp; Publications</a>
       <a href="awards.html" class="active">Awards</a>
+      <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
       <a href="contact.html" class="cta">Contact</a>
     </nav>
     <button class="burger" aria-label="Menu"><span></span><span></span></button>
@@ -45,7 +73,7 @@
   <div class="wrap">
     <span class="eyebrow">Prizes &amp; Awards</span>
     <h1>Honours &amp;<br>recognition</h1>
-    <p class="lead">Certificates, international art prizes and memberships. The bodies and competitions that have recognised the work.</p>
+    <p class="lead">Certificates, international art prizes and memberships. The bodies and competitions that have recognised my artwork.</p>
   </div>
 </section>
 
@@ -61,44 +89,44 @@
     <div class="cat" id="certificates">
       <span class="eyebrow">Certificates of appreciation &amp; recognition</span>
       <div class="rows">
-        <div class="row reveal"><span class="yr"></span><span class="ti">Artist Certificate — Fine Artist Certified</span><span class="pl">Museum of the Américas (MOA)</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Artist of the Year — Best in Art &amp; Creativity</span><span class="pl">The World of Art Award</span></div>
-        <div class="row reveal"><span class="yr"></span><span class="ti">Artistic Excellence</span><span class="pl">Circle Foundation for the Arts</span></div>
-        <div class="row reveal"><span class="yr"></span><span class="ti">Power of Creativity Art Prize</span><span class="pl">Contemporary Art Curator Magazine</span></div>
-        <div class="row reveal"><span class="yr">2020</span><span class="ti">Certificate of Artistic Achievement</span><span class="pl">The Pinacothèque Museum</span></div>
-        <div class="row reveal"><span class="yr">2019</span><span class="ti">Certificate of Artistic Achievement</span><span class="pl">The Pinacothèque Museum</span></div>
-        <div class="row reveal"><span class="yr">2017</span><span class="ti">Certificate of Artistic Achievement</span><span class="pl">The Pinacothèque Museum</span></div>
-        <div class="row reveal"><span class="yr"></span><span class="ti">Certificate of Excellence</span><span class="pl">Artavita</span></div>
+        <div class="row reveal has-cert" data-cert="awards/moa-artist-certificate.png"><span class="ti">Artist Certificate — Fine Artist Certified <span class="view">View</span></span><span class="pl">Museum of the Américas (MOA)</span></div>
+        <div class="row reveal has-cert" data-cert="awards/world-of-art-award.jpg"><span class="ti">Artist of the Year — Best in Art &amp; Creativity <span class="view">View</span></span><span class="pl">The World of Art Award</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artistic-excellence.jpg"><span class="ti">Artistic Excellence <span class="view">View</span></span><span class="pl">Circle Foundation for the Arts</span></div>
+        <div class="row reveal has-cert" data-cert="awards/power-of-creativity.png"><span class="ti">Power of Creativity Art Prize <span class="view">View</span></span><span class="pl">Contemporary Art Curator Magazine</span></div>
+        <div class="row reveal has-cert" data-cert="awards/pinacotheque-2020.png"><span class="ti">Certificate of Artistic Achievement <span class="view">View</span></span><span class="pl">The Pinacothèque Museum</span></div>
+        <div class="row reveal has-cert" data-cert="awards/pinacotheque-2019.png"><span class="ti">Certificate of Artistic Achievement <span class="view">View</span></span><span class="pl">The Pinacothèque Museum</span></div>
+        <div class="row reveal has-cert" data-cert="awards/pinacotheque-2017.png"><span class="ti">Certificate of Artistic Achievement <span class="view">View</span></span><span class="pl">The Pinacothèque Museum</span></div>
+        <div class="row reveal has-cert" data-cert="awards/certificate-of-excellence.jpg"><span class="ti">Certificate of Excellence <span class="view">View</span></span><span class="pl">Artavita</span></div>
       </div>
     </div>
 
     <div class="cat" id="prizes">
       <span class="eyebrow">Art prizes</span>
       <div class="rows">
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Artistic Career Award</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">The Stars of Art and Market Award</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Artist of the Year — Best in Art &amp; Creativity</span><span class="pl">World of Art Contemporary Art Magazine</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Michelangelo International Prize</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Artistic Excellence</span><span class="pl">Circle Foundation for the Arts</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">International Prize PEGASUS for the Arts</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">Winter Prize 2023 — Artvue</span><span class="pl">Bruxelles Art Vue</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">TOP ARTISTS — The Protagonists of Contemporary Art</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2023</span><span class="ti">5th International Prize Leonardo Da Vinci</span><span class="pl">Effetto Arte Foundation</span></div>
-        <div class="row reveal"><span class="yr">2021</span><span class="ti">Power of Creativity Art Prize</span><span class="pl">Contemporary Art Curator Magazine</span></div>
-        <div class="row reveal"><span class="yr">2020</span><span class="ti">Finalist — to publish in <em>World Wide Art Magazine</em></span><span class="pl">Artavita</span></div>
-        <div class="row reveal"><span class="yr">2020</span><span class="ti">Finalist — to exhibit in Art San Diego</span><span class="pl">Artavita</span></div>
-        <div class="row reveal"><span class="yr">2020</span><span class="ti">Finalist — to publish in <em>Outsider Art Magazine</em>, Issue 3</span><span class="pl">Outsider Art Magazine</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artistic-career-award.jpg"><span class="ti">Artistic Career Award <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/stars-of-art-market.jpg"><span class="ti">The Stars of Art and Market Award <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/world-of-art-award.jpg"><span class="ti">Artist of the Year — Best in Art &amp; Creativity <span class="view">View</span></span><span class="pl">World of Art Contemporary Art Magazine</span></div>
+        <div class="row reveal has-cert" data-cert="awards/michelangelo-prize-trophy.jpg"><span class="ti">Michelangelo International Prize <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artistic-excellence.jpg"><span class="ti">Artistic Excellence <span class="view">View</span></span><span class="pl">Circle Foundation for the Arts</span></div>
+        <div class="row reveal has-cert" data-cert="awards/pegasus-prize-trophy.jpg"><span class="ti">International Prize PEGASUS for the Arts <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/winter-prize-2023.jpg"><span class="ti">Winter Prize 2023 — Artvue <span class="view">View</span></span><span class="pl">Bruxelles Art Vue</span></div>
+        <div class="row reveal"><span class="ti">TOP ARTISTS — The Protagonists of Contemporary Art</span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/leonardo-davinci-1.jpg,awards/leonardo-davinci-2.jpg,awards/leonardo-davinci-3.jpg,awards/leonardo-davinci-4.jpg,awards/leonardo-davinci-5.jpg"><span class="ti">5th International Prize Leonardo Da Vinci <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/power-of-creativity.png"><span class="ti">Power of Creativity Art Prize <span class="view">View</span></span><span class="pl">Contemporary Art Curator Magazine</span></div>
+        <div class="row reveal"><span class="ti">Finalist — to publish in <em>World Wide Art Magazine</em></span><span class="pl">Artavita</span></div>
+        <div class="row reveal"><span class="ti">Finalist — to exhibit in Art San Diego</span><span class="pl">Artavita</span></div>
+        <div class="row reveal"><span class="ti">Finalist — to publish in <em>Outsider Art Magazine</em>, Issue 3</span><span class="pl">Outsider Art Magazine</span></div>
       </div>
     </div>
 
     <div class="cat" id="memberships">
       <span class="eyebrow">Memberships</span>
       <div class="rows">
-        <div class="row reveal"><span class="yr">UNESCO</span><span class="ti">International Association of Visual Artists (IAVA)</span><span class="pl">Member · Endorsed by UNESCO</span></div>
-        <div class="row reveal"><span class="yr">YICCA</span><span class="ti">Int'l Contest of Contemporary Art</span><span class="pl">Selected artist</span></div>
-        <div class="row reveal"><span class="yr">USA</span><span class="ti">Redwood Art Group</span><span class="pl">Represented artist</span></div>
-        <div class="row reveal"><span class="yr">Int'l</span><span class="ti">Artavita</span><span class="pl">Featured artist</span></div>
-        <div class="row reveal"><span class="yr">Int'l</span><span class="ti">Artfacts</span><span class="pl">Ranked artist</span></div>
+        <div class="row reveal"><span class="ti">International Association of Visual Artists (IAVA)</span><span class="pl">Member · Endorsed by UNESCO</span></div>
+        <div class="row reveal"><span class="ti">Int'l Contest of Contemporary Art</span><span class="pl">Selected artist</span></div>
+        <div class="row reveal"><span class="ti">Redwood Art Group</span><span class="pl">Represented artist</span></div>
+        <div class="row reveal"><span class="ti">Artavita</span><span class="pl">Featured artist</span></div>
+        <div class="row reveal"><span class="ti">Artfacts</span><span class="pl">Ranked artist</span></div>
       </div>
     </div>
 
@@ -110,12 +138,13 @@
     <div class="grid">
       <div class="brandcol">
         <div class="name">Moussa Salman</div>
-        <div class="sub">Egyptian / Dutch Contemporary Artist (1952)</div>
+        <div class="sub">Egyptian/Dutch Contemporary Artist (1952)</div>
         <p style="color:rgba(245,242,236,.6);font-size:14px;margin-top:20px;max-width:34ch">Abstract mixed media paintings.</p>
       </div>
       <div>
         <h4>Explore</h4>
         <a href="limitededitions.html">Limited Editions</a>
+      <a href="originals.html">Originals</a>
           <a href="biography.html">Biography</a>
         <a href="reviews.html">Art Reviews</a>
         <a href="exhibitions.html">Exhibitions &amp; Publications</a>
@@ -137,7 +166,44 @@
   </div>
 </footer>
 
+<div class="cert-lb" aria-hidden="true">
+  <button class="cert-close" aria-label="Close">×</button>
+  <button class="cert-nav cert-prev" aria-label="Previous">‹</button>
+  <img alt="Certificate">
+  <button class="cert-nav cert-next" aria-label="Next">›</button>
+  <div class="cert-count"></div>
+</div>
+
 <script src="site.js"></script>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){
+    var lb=document.querySelector('.cert-lb'), img=lb.querySelector('img'),
+        count=lb.querySelector('.cert-count');
+    var imgs=[], idx=0;
+    function render(){img.src=imgs[idx];count.textContent=(idx+1)+' / '+imgs.length;}
+    function open(list){
+      imgs=list;idx=0;
+      lb.classList.toggle('is-gallery',imgs.length>1);
+      render();
+      lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    }
+    function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+    function step(d){idx=(idx+d+imgs.length)%imgs.length;render();}
+    document.querySelectorAll('.row.has-cert').forEach(function(r){
+      r.addEventListener('click',function(){open(r.getAttribute('data-cert').split(','));});
+    });
+    lb.querySelector('.cert-close').addEventListener('click',close);
+    lb.querySelector('.cert-prev').addEventListener('click',function(e){e.stopPropagation();step(-1);});
+    lb.querySelector('.cert-next').addEventListener('click',function(e){e.stopPropagation();step(1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft'&&imgs.length>1)step(-1);
+      else if(e.key==='ArrowRight'&&imgs.length>1)step(1);
+    });
+  })();
+</script>
 </body>
 </html>

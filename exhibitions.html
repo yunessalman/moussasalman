@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibitions &amp; Publications — Moussa Salman</title>
+<meta name="description" content="Selected exhibitions and publications featuring the work of Moussa Salman, from Amsterdam to Dubai and Houston.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .cat{margin-top:clamp(46px,7vw,80px);scroll-margin-top:96px}
+  .cat:first-of-type{margin-top:0}
+  .cat>.eyebrow{display:block;margin-bottom:8px}
+  .contents{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(40px,6vw,60px)}
+  .contents a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:100px;padding:9px 16px;color:var(--ink-soft);transition:border-color .25s,color .25s}
+  .contents a:hover{border-color:var(--ink);color:var(--ink)}
+  .row .ti em{font-style:italic}
+  .row .pl .sub{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-faint);margin-top:4px}
+  /* clickable certificate row */
+  .row.has-cert{cursor:pointer;transition:background .25s}
+  .row.has-cert:hover{background:var(--paper-3)}
+  .row.has-cert .ti{display:inline-flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .row.has-cert .view{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  /* certificate lightbox */
+  .cert-lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(27,24,19,.86);padding:clamp(20px,5vw,64px);opacity:0;transition:opacity .3s}
+  .cert-lb.open{display:flex;opacity:1}
+  .cert-lb img{max-width:100%;max-height:100%;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);background:#fff}
+  .cert-lb .cert-close{position:absolute;top:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);
+    width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,242,236,.4);background:transparent;
+    color:#F5F2EC;font-size:22px;line-height:1;cursor:pointer;transition:background .25s,border-color .25s}
+  .cert-lb .cert-close:hover{background:rgba(245,242,236,.12);border-color:#F5F2EC}
+  .cert-lb .cert-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(245,242,236,.4);background:rgba(27,24,19,.4);color:#F5F2EC;font-size:24px;line-height:1;
+    cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .25s,border-color .25s}
+  .cert-lb .cert-nav:hover{background:rgba(245,242,236,.16);border-color:#F5F2EC}
+  .cert-lb .cert-prev{left:clamp(12px,3vw,28px)}
+  .cert-lb .cert-next{right:clamp(12px,3vw,28px)}
+  .cert-lb.is-gallery .cert-nav{display:flex}
+  .cert-lb .cert-count{position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:rgba(245,242,236,.8);display:none}
+  .cert-lb.is-gallery .cert-count{display:block}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="name">Moussa Salman</span>
+      <span class="sub">Contemporary Artist</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="limitededitions.html">Limited Editions</a>
+      <a href="originals.html">Originals</a>
+      <a href="biography.html">Biography</a>
+      <a href="reviews.html">Art Reviews</a>
+      <a href="exhibitions.html" class="active">Exhibitions &amp; Publications</a>
+      <a href="awards.html">Awards</a>
+      <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
+      <a href="contact.html" class="cta">Contact</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="nav-scrim"></div>
+
+<section class="page-band">
+  <div class="wrap">
+    <span class="eyebrow">Exhibitions &amp; Publications</span>
+    <h1>Shown across<br>three continents</h1>
+    <p class="lead">A full record of museum exhibitions, international art fairs, group shows, catalogues, art books and magazine features.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <nav class="contents" aria-label="Sections">
+      <a href="#museum">Museum exhibitions</a>
+      <a href="#fairs">Art fairs</a>
+      <a href="#group">Group exhibitions</a>
+      <a href="#catalogues">Catalogues</a>
+      <a href="#books">Art books</a>
+      <a href="#magazines">Art magazines</a>
+      <a href="#press">Publications</a>
+      <a href="#represented">Represented &amp; featured</a>
+    </nav>
+
+    <div class="cat" id="museum">
+      <span class="eyebrow">Museum exhibitions</span>
+      <div class="rows">
+        <div class="row reveal has-cert" data-cert="awards/art-dubai-2024.jpg"><span class="yr">2024</span><span class="ti">ART DUBAI — International Art Fair <span class="view">View</span></span><span class="pl">Dubai, UAE · MOA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/the-nations-1.jpg,awards/the-nations-2.jpg"><span class="yr">2024</span><span class="ti">The Nations <span class="view">View</span></span><span class="pl">Houston, TX, USA · MOA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/photofest-1.jpg,awards/photofest-2.jpg,awards/photofest-3.jpg"><span class="yr">2023</span><span class="ti">Photo Fest <span class="view">View</span></span><span class="pl">Hilversum, Netherlands · MOA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/small-is-beautiful-1.jpg,awards/small-is-beautiful-2.jpg"><span class="yr">2023</span><span class="ti">Small is Beautiful <span class="view">View</span></span><span class="pl">Dubai, UAE · MOA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/geoje-letter-of-donation.png"><span class="yr">2022</span><span class="ti">The 8th Geoje International Art Festival <span class="view">View</span></span><span class="pl">Haegeumgang Theme Museum, Geoje, South Korea<span class="sub">1 Sep – 25 Oct 2022</span></span></div>
+        <div class="row reveal has-cert" data-cert="awards/jeongeup-certificate.png"><span class="yr">2022</span><span class="ti">Jeongeup International Art Festival — <em>Relative and Absolute Truth: Axis of Peace</em> <span class="view">View</span></span><span class="pl">Jeongeup, South Korea<span class="sub">14 Oct – 25 Nov 2022</span></span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="fairs">
+      <span class="eyebrow">Art fairs</span>
+      <div class="rows">
+        <div class="row reveal has-cert" data-cert="awards/hamptons-1.jpg,awards/hamptons-2.jpg,awards/hamptons-3.jpg"><span class="yr">2024</span><span class="ti">Hamptons Fine Art Fair <span class="view">View</span></span><span class="pl">New York, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/la-art-show.jpg"><span class="yr">2024</span><span class="ti">LA Art Show <span class="view">View</span></span><span class="pl">Los Angeles, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/rome-art-expo-1.png,awards/rome-art-expo-2.jpg"><span class="yr">2023</span><span class="ti">Rome Art Expo — Autumn Edition <span class="view">View</span></span><span class="pl">Rome, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/red-dot-miami.jpg"><span class="yr">2023</span><span class="ti">Red Dot Miami <span class="view">View</span></span><span class="pl">Miami, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/hamptons-1.jpg,awards/hamptons-2.jpg"><span class="yr">2023</span><span class="ti">Hamptons Fine Art Fair <span class="view">View</span></span><span class="pl">New York, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artexpo-ny.jpg"><span class="yr">2023</span><span class="ti">Artexpo New York <span class="view">View</span></span><span class="pl">New York City, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artexpo-ny.jpg"><span class="yr">2021</span><span class="ti">Artexpo New York <span class="view">View</span></span><span class="pl">New York City, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/shanghai-1.png,awards/shanghai-2.png"><span class="yr">2020</span><span class="ti">Shanghai International Art Fair <span class="view">View</span></span><span class="pl">Shanghai, China</span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="group">
+      <span class="eyebrow">Group exhibitions</span>
+      <div class="rows">
+        <div class="row reveal has-cert" data-cert="awards/career-art-award.jpg"><span class="yr">2023</span><span class="ti">Career Art Award <span class="view">View</span></span><span class="pl">Sanremo, Italy · Fondazione Effetto Arte</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artifact-gallery.png"><span class="yr">2023</span><span class="ti">Artifact Gallery <span class="view">View</span></span><span class="pl">New York City, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/michelangelo.png"><span class="yr">2023</span><span class="ti">International Prize Michelangelo <span class="view">View</span></span><span class="pl">Rome, Italy · Fondazione Effetto Arte</span></div>
+        <div class="row reveal has-cert" data-cert="awards/leonardo-1.jpg,awards/leonardo-2.jpg,awards/leonardo-3.jpg,awards/leonardo-4.jpg,awards/leonardo-5.jpg"><span class="yr">2023</span><span class="ti">5th International Prize Leonardo da Vinci <span class="view">View</span></span><span class="pl">Milan, Italy · Fondazione Effetto Arte</span></div>
+        <div class="row reveal has-cert" data-cert="awards/emerging-scene.jpg"><span class="yr">2021</span><span class="ti">Emerging Scene <span class="view">View</span></span><span class="pl">Dubai, UAE</span></div>
+        <div class="row reveal has-cert" data-cert="awards/mads-2.png"><span class="yr">2020</span><span class="ti">M.A.D.S. Art Gallery <span class="view">View</span></span><span class="pl">Milan, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/corriere-1.jpeg,awards/corriere-2.png"><span class="yr">2020</span><span class="ti">Corriere dell'Arte <span class="view">View</span></span><span class="pl">Italy</span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="catalogues">
+      <span class="eyebrow">Catalogues</span>
+      <div class="rows">
+        <div class="row reveal has-cert" data-cert="awards/rome-art-expo-1.png,awards/rome-art-expo-2.jpg"><span class="yr">2023</span><span class="ti">Rome Art Expo — Autumn Edition <span class="view">View</span></span><span class="pl">Rome, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/career-art-award.jpg"><span class="yr">2023</span><span class="ti">Career Art Award <span class="view">View</span></span><span class="pl">Sanremo, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/michelangelo.png"><span class="yr">2023</span><span class="ti">International Prize Michelangelo — <em>The Genius of Italy</em> <span class="view">View</span></span><span class="pl">Rome, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artexpo-ny.jpg"><span class="yr">2023</span><span class="ti">Artexpo New York <span class="view">View</span></span><span class="pl">New York City, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/winter-prize-2023.jpg"><span class="yr">2023</span><span class="ti">Winter Prize 2023 — Artvue <span class="view">View</span></span><span class="pl">Brussels, Belgium</span></div>
+        <div class="row reveal has-cert" data-cert="awards/pegasus.jpg"><span class="yr">2023</span><span class="ti">International Prize PEGASUS for the Arts <span class="view">View</span></span><span class="pl">Venice, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/top-artists.jpg"><span class="yr">2023</span><span class="ti">TOP ARTISTS — The Protagonists of Contemporary Art <span class="view">View</span></span><span class="pl">Venice, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/leonardo-1.jpg,awards/leonardo-2.jpg,awards/leonardo-3.jpg,awards/leonardo-4.jpg,awards/leonardo-5.jpg"><span class="yr">2023</span><span class="ti">5th International Prize Leonardo Da Vinci <span class="view">View</span></span><span class="pl">Milan, Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/geoje-icaf-certificate.jpg"><span class="yr">2022</span><span class="ti">The 8th Geoje International Art Festival <span class="view">View</span></span><span class="pl">Haegeumgang &amp; Yu Kyung Art Museum, Geoje, South Korea</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artexpo-ny.jpg"><span class="yr">2021</span><span class="ti">Artexpo New York <span class="view">View</span></span><span class="pl">New York City, USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/shanghai-1.png,awards/shanghai-2.png"><span class="yr">2020</span><span class="ti">Shanghai International Art Fair <span class="view">View</span></span><span class="pl">Shanghai, China</span></div>
+        <div class="row reveal has-cert" data-cert="awards/mads-1.jpg,awards/mads-2.png,awards/mads-3.jpg"><span class="yr">2020</span><span class="ti">MADS Milano Gallery — <em>“20.20”</em> International Contemporary Exhibition <span class="view">View</span></span><span class="pl">Milan, Italy</span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="books">
+      <span class="eyebrow">Art books</span>
+      <div class="rows">
+        <div class="row reveal has-cert" data-cert="awards/encyclopedia-2025-1.jpg,awards/encyclopedia-2025-2.jpg"><span class="yr">2025</span><span class="ti"><em>Worldwide Encyclopedia of Contemporary Art</em> <span class="view">View</span></span><span class="pl">Biblioteca de Artistas de las Comunidades Europeas</span></div>
+        <div class="row reveal"><span class="yr">2023</span><span class="ti"><em>Contemporary Celebrity Masters</em>, Vol. IV — The Stars of Art and Market</span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal"><span class="yr">2023</span><span class="ti"><em>Contemporary Celebrity Masters</em>, Vol. III</span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal has-cert" data-cert="awards/celebrity-masters-vol2.jpg"><span class="yr">2023</span><span class="ti"><em>Contemporary Celebrity Masters</em>, Vol. II <span class="view">View</span></span><span class="pl">Effetto Arte Foundation</span></div>
+        <div class="row reveal"><span class="yr">2022</span><span class="ti"><em>Important World Artists</em>, Volume 5</span><span class="pl">World Wide Art Books</span></div>
+        <div class="row reveal"><span class="yr">2022</span><span class="ti"><em>Animal Worlds of Art</em></span><span class="pl">Enter into Art</span></div>
+        <div class="row reveal has-cert" data-cert="awards/coe-vol4-1.png,awards/coe-vol4-2.png,awards/coe-vol4-3.jpg,awards/coe-vol4-4.jpg"><span class="yr">2021</span><span class="ti"><em>Contemporary Art of Excellence</em>, Volume IV <span class="view">View</span></span><span class="pl">Global Art Agency (GAA)</span></div>
+        <div class="row reveal has-cert" data-cert="awards/limitless-nature-1.png,awards/limitless-nature-2.png"><span class="yr">2021</span><span class="ti"><em>Limitless Nature</em> <span class="view">View</span></span><span class="pl">Bruxelles Art Vue</span></div>
+        <div class="row reveal has-cert" data-cert="awards/volumes-of-darkness-1.png,awards/volumes-of-darkness-2.png"><span class="yr">2021</span><span class="ti"><em>Volumes of Darkness</em> <span class="view">View</span></span><span class="pl">Bruxelles Art Vue</span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="magazines">
+      <span class="eyebrow">Art magazines</span>
+      <div class="rows">
+        <div class="row reveal"><span class="yr">2024</span><span class="ti"><em>Art in America</em> — Spring Issue</span><span class="pl">USA</span></div>
+        <div class="row reveal has-cert" data-cert="awards/prado-book-1.png,awards/prado-book-2.png"><span class="yr">2021</span><span class="ti">Prado Museum book — <em>Contemporary Art and Old Masters in the Prado</em> <span class="view">View</span></span><span class="pl">World of Art Magazine</span></div>
+        <div class="row reveal has-cert" data-cert="awards/wwa-issue4-1.png,awards/wwa-issue4-2.png"><span class="yr">2020</span><span class="ti"><em>World Wide Art Magazine</em> — Issue 4 <span class="view">View</span></span><span class="pl"></span></div>
+        <div class="row reveal has-cert" data-cert="awards/outsider-issue3-1.png,awards/outsider-issue3-2.jpg,awards/outsider-issue3-3.jpg"><span class="yr">2020</span><span class="ti"><em>Outsider Art Magazine</em> — Issue 3 <span class="view">View</span></span><span class="pl"></span></div>
+        <div class="row reveal has-cert" data-cert="awards/creativpaper-1.png,awards/creativpaper-2.png,awards/creativpaper-3.png"><span class="yr">2020</span><span class="ti"><em>CreativPaper</em> — Issue 20 <span class="view">View</span></span><span class="pl"></span></div>
+        <div class="row reveal has-cert" data-cert="awards/corriere-1.jpeg,awards/corriere-2.png"><span class="yr">2020</span><span class="ti"><em>Corriere dell'Arte</em> — August Issue <span class="view">View</span></span><span class="pl">Italy</span></div>
+        <div class="row reveal has-cert" data-cert="awards/artist-portfolio-1.png,awards/artist-portfolio-2.png"><span class="yr">2020</span><span class="ti"><em>Artist Portfolio Magazine</em> — 10 Year Anniversary Issue <span class="view">View</span></span><span class="pl"></span></div>
+      </div>
+    </div>
+
+    <div class="cat" id="press">
+      <span class="eyebrow">Publications &amp; features</span>
+      <div class="rows">
+        <a class="row reveal" href="https://aatonau.com/moussa-salman-an-artistic-journey-between-cairo-and-amsterdam/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span class="yr">Interview</span><span class="ti">An Artistic Journey Between Cairo and Amsterdam <span class="view">Read</span></span><span class="pl">AATONAU</span></a>
+      </div>
+    </div>
+
+    <div class="cat" id="represented">
+      <span class="eyebrow">Represented &amp; featured</span>
+      <div class="chips" style="margin-top:18px">
+        <span class="chip">Artsy — represented by Artifact</span>
+        <span class="chip">Art Upclose · USA</span>
+        <span class="chip">Redwood Art Group · USA</span>
+        <span class="chip">Artavita · USA</span>
+        <span class="chip">Circle Foundation for the Arts · France</span>
+        <span class="chip">Artrepreneur · USA</span>
+        <span class="chip">LensCulture · Netherlands</span>
+        <span class="chip">Contemporary Art Curator Magazine · USA</span>
+        <span class="chip">Global Art Agency · UK</span>
+      </div>
+    </div>
+
+    <p class="body" style="color:var(--ink-faint);font-size:14px;margin-top:clamp(40px,6vw,60px)">A full record. To add further exhibitions, fairs or press, send the details and they'll be included here.</p>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="grid">
+      <div class="brandcol">
+        <div class="name">Moussa Salman</div>
+        <div class="sub">Egyptian/Dutch Contemporary Artist (1952)</div>
+        <p style="color:rgba(245,242,236,.6);font-size:14px;margin-top:20px;max-width:34ch">Abstract mixed media paintings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="limitededitions.html">Limited Editions</a>
+      <a href="originals.html">Originals</a>
+          <a href="biography.html">Biography</a>
+        <a href="reviews.html">Art Reviews</a>
+        <a href="exhibitions.html">Exhibitions &amp; Publications</a>
+        <a href="awards.html">Prizes &amp; Awards</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
+        <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/moussa-salman/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr"></span> Moussa Salman. All rights reserved.</span>
+      <span>Amsterdam · Cairo</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cert-lb" aria-hidden="true">
+  <button class="cert-close" aria-label="Close">×</button>
+  <button class="cert-nav cert-prev" aria-label="Previous">‹</button>
+  <img alt="Certificate">
+  <button class="cert-nav cert-next" aria-label="Next">›</button>
+  <div class="cert-count"></div>
+</div>
+
+<script src="site.js"></script>
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){
+    var lb=document.querySelector('.cert-lb'), img=lb.querySelector('img'),
+        count=lb.querySelector('.cert-count');
+    var imgs=[], idx=0;
+    function render(){img.src=imgs[idx];count.textContent=(idx+1)+' / '+imgs.length;}
+    function open(list){
+      imgs=list;idx=0;
+      lb.classList.toggle('is-gallery',imgs.length>1);
+      render();
+      lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    }
+    function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+    function step(d){idx=(idx+d+imgs.length)%imgs.length;render();}
+    document.querySelectorAll('.row.has-cert').forEach(function(r){
+      r.addEventListener('click',function(){open(r.getAttribute('data-cert').split(','));});
+    });
+    lb.querySelector('.cert-close').addEventListener('click',close);
+    lb.querySelector('.cert-prev').addEventListener('click',function(e){e.stopPropagation();step(-1);});
+    lb.querySelector('.cert-next').addEventListener('click',function(e){e.stopPropagation();step(1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft'&&imgs.length>1)step(-1);
+      else if(e.key==='ArrowRight'&&imgs.length>1)step(1);
+    });
+  })();
+</script>
+</body>
+</html>
