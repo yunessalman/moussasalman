@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Buying Works — Moussa Salman</title>
+<meta name="description" content="How buying an original painting works — every purchase is handled securely through Escrow.com, with a signed certificate of authenticity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .buying .lead{max-width:34ch}
+  .buying .prose{max-width:62ch;margin:0 auto}
+  .buying .prose p:first-of-type::first-letter{
+    font-size:inherit;float:none;font-family:inherit;line-height:inherit;padding:0;font-weight:inherit;color:inherit;
+  }
+  /* the process — quiet, gallery-like numbered steps */
+  .process{max-width:62ch;margin:clamp(40px,5vw,64px) auto 0}
+  .process .label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:30px;
+  }
+  .process ol{list-style:none;counter-reset:step}
+  .process li{
+    counter-increment:step;display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,34px);
+    align-items:baseline;padding:24px 0;border-top:1px solid var(--line-soft);
+  }
+  .process li:first-child{border-top:0;padding-top:0}
+  .process li::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:var(--serif);font-size:1.9rem;font-weight:500;line-height:1;
+    color:var(--accent);font-feature-settings:"tnum";
+  }
+  .process li p{
+    font-family:var(--serif);font-size:1.18rem;line-height:1.55;color:var(--ink);margin:0;
+  }
+  .process .aside{
+    font-family:var(--serif);font-style:italic;font-size:1.08rem;line-height:1.6;
+    color:var(--ink-soft);margin:clamp(28px,4vw,40px) 0 0;
+  }
+  .buying .certificate{
+    max-width:62ch;margin:clamp(48px,6vw,72px) auto 0;
+    padding-top:clamp(40px,5vw,56px);border-top:1px solid var(--line);
+  }
+  .buying .certificate p{font-size:1.08rem;line-height:1.8;color:var(--ink-soft);margin:0}
+  .buying .closing{
+    max-width:54ch;margin:clamp(48px,6vw,72px) auto 0;text-align:center;
+    font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.36;
+    letter-spacing:-.01em;color:var(--ink);
+  }
+  .buying .return{text-align:center;margin-top:clamp(44px,5vw,60px)}
+  .buying .return a{
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+    transition:color .3s var(--ease);
+  }
+  .buying .return a .arr{transition:transform .35s var(--ease)}
+  .buying .return a:hover{color:var(--ink)}
+  .buying .return a:hover .arr{transform:translateX(-4px)}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="name">Moussa Salman</span>
+      <span class="sub">Contemporary Artist</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="limitededitions.html">Limited Editions</a>
+      <a href="how-buying-works.html" class="active">How Buying Works</a>
+      <a href="biography.html">Biography</a>
+      <a href="reviews.html">Art Reviews</a>
+      <a href="exhibitions.html">Exhibitions</a>
+      <a href="awards.html">Prizes &amp; Awards</a>
+      <a href="contact.html" class="cta">Contact</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="nav-scrim"></div>
+
+<section class="page-band">
+  <div class="wrap">
+    <span class="eyebrow">Buying with confidence</span>
+    <h1>How Buying Works</h1>
+  </div>
+</section>
+
+<section class="buying" style="padding-top:clamp(36px,5vw,56px)">
+  <div class="wrap">
+    <div class="prose reveal">
+      <p class="lead">Buying an original painting should feel as safe as it is special. That's why every purchase is handled through Escrow.com, a licensed, independent payment service trusted worldwide for high-value sales.</p>
+    </div>
+
+    <div class="process reveal">
+      <div class="label">Here's what happens</div>
+      <ol>
+        <li><p>When you buy a painting, your payment is held securely by Escrow.com, not paid directly to me.</p></li>
+        <li><p>Only once your payment is safely held do I carefully pack and ship your painting to you.</p></li>
+        <li><p>When it arrives, you have a few days to unwrap it and confirm it's exactly as described.</p></li>
+        <li><p>Your payment is released to me only after you're satisfied.</p></li>
+      </ol>
+      <p class="aside">If anything isn't right, Escrow.com is there to help resolve it.</p>
+    </div>
+
+    <div class="certificate reveal">
+      <p>Every painting also comes with a signed certificate of authenticity, naming the work and confirming it as an original by my hand, so its provenance is yours to keep.</p>
+    </div>
+
+    <p class="closing reveal">It's a simple, secure way to buy with complete peace of mind, wherever in the world you are.</p>
+
+    <div class="return reveal">
+      <a href="limitededitions.html"><span class="arr">←</span> Return to the collection</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="grid">
+      <div class="brandcol">
+        <div class="name">Moussa Salman</div>
+        <div class="sub">Egyptian/Dutch Contemporary Artist (1952)</div>
+        <p style="color:rgba(245,242,236,.6);font-size:14px;margin-top:20px;max-width:34ch">Abstract mixed media paintings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="limitededitions.html">Limited Editions</a>
+        <a href="how-buying-works.html">How Buying Works</a>
+        <a href="biography.html">Biography</a>
+        <a href="reviews.html">Art Reviews</a>
+        <a href="exhibitions.html">Exhibitions &amp; Publications</a>
+        <a href="awards.html">Prizes &amp; Awards</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
+        <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/moussa-salman/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr"></span> Moussa Salman. All rights reserved.</span>
+      <span>Amsterdam · Cairo</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -24,6 +24,8 @@
   .row.has-cert:hover{background:var(--paper-3)}
   .row.has-cert .ti{display:inline-flex;align-items:baseline;gap:10px}
   .row.has-cert .view{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .row .ti a .view{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .row .ti a:hover{text-decoration:underline;text-underline-offset:3px}
   /* certificate lightbox */
   .cert-lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
     background:rgba(27,24,19,.86);padding:clamp(20px,5vw,64px);opacity:0;transition:opacity .3s}
@@ -127,6 +129,7 @@
         <div class="row reveal"><span class="ti">Redwood Art Group</span><span class="pl">Represented artist</span></div>
         <div class="row reveal"><span class="ti">Artavita</span><span class="pl">Featured artist</span></div>
         <div class="row reveal"><span class="ti">Artfacts</span><span class="pl">Ranked artist</span></div>
+        <div class="row reveal"><span class="ti"><a href="https://nationaalatelier.nl/kunstenaar/2674/moussa-salman" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;display:inline-flex;align-items:baseline;gap:10px">Nationaal Atelier <span class="view">Visit</span></a></span><span class="pl">Member artist</span></div>
       </div>
     </div>
 

@@ -64,12 +64,13 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
     var burger=document.querySelector('.burger');
     if(!burger)return;
     var body=document.body;
-    function toggle(){body.classList.toggle('menu-open');}
+    function setOpen(open){body.classList.toggle('menu-open',open);body.style.overflow=open?'hidden':'';}
+    function toggle(){setOpen(!body.classList.contains('menu-open'));}
     burger.addEventListener('click',toggle);
     var scrim=document.querySelector('.nav-scrim');
-    if(scrim)scrim.addEventListener('click',function(){body.classList.remove('menu-open');});
+    if(scrim)scrim.addEventListener('click',function(){setOpen(false);});
     document.querySelectorAll('.nav a').forEach(function(a){
-      a.addEventListener('click',function(){body.classList.remove('menu-open');});
+      a.addEventListener('click',function(){setOpen(false);});
     });
   }
 
