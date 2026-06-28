@@ -10,23 +10,7 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   /* ===== Option A — Salon (light) ===== */
-  .heroA{position:relative;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line);background:#000}
-  .heroA>img{display:block;width:100%;height:auto}
-  .heroA .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,17,13,.82),rgba(20,17,13,.28) 42%,transparent 70%)}
-  .heroA .inner{position:absolute;left:0;right:0;bottom:0;width:100%;max-width:var(--maxw);margin-inline:auto;padding:clamp(30px,6vw,76px) var(--pad)}
-  .heroA .eyebrow{color:rgba(245,242,236,.72)}
-  .heroA h1{font-family:var(--serif);font-weight:600;color:#fff;font-size:clamp(2.7rem,8.5vw,5.4rem);line-height:.98;letter-spacing:-.015em;margin:.28em 0 .34em;text-wrap:balance}
-  .heroA .lead{color:rgba(245,242,236,.92);max-width:38ch;font-weight:400}
-  .heroA .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-  .heroA .btn-ghost{border-color:rgba(245,242,236,.6);color:#F5F2EC}
-  .heroA .btn-ghost:hover{background:#F5F2EC;color:var(--ink)}
-  @media(max-width:720px){
-    .heroA{min-height:62svh}
-    .heroA>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
-    .heroA .veil{background:linear-gradient(to top,rgba(20,17,13,.9),rgba(20,17,13,.5) 46%,rgba(20,17,13,.18))}
-    .heroA .inner{padding-bottom:clamp(38px,11vw,64px)}
-    .heroA h1{font-size:clamp(2.4rem,11vw,3.4rem)}
-  }
+  /* split hero — painting beside text (styles in styles.css: .hero) */
 
   .sec-head2{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,38px)}
   .sec-head2 h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4vw,3rem);line-height:1.04}
@@ -55,13 +39,7 @@
   .switch a:hover{color:var(--paper)}
 </style>
 <style>
-  /* Home-only default palette: cheerful baby blue (overridable via Tweaks) */
-  :root{
-    --paper:#EEF6FD; --paper-2:#E2EFFA; --paper-3:#D5E7F6;
-    --ink:#15263E; --ink-soft:#33485F; --ink-faint:#5E7390;
-    --line:rgba(21,38,62,0.14); --line-soft:rgba(21,38,62,0.07);
-    --accent:oklch(0.58 0.13 245); --accent-deep:oklch(0.48 0.12 245);
-  }
+  /* default palette lives in styles.css (warm cream) — overridable via Tweaks */
 </style>
 </head>
 <body>
@@ -87,17 +65,26 @@
 <div class="nav-scrim"></div>
 
 <!-- HERO -->
-<section class="heroA">
-  <img src="art/04.jpg" alt="Sea of Love, 2020 — a painting by Moussa Salman">
-  <div class="veil"></div>
-  <div class="inner">
-    <span class="eyebrow">Egyptian / Dutch Contemporary Artist (1952)</span>
-    <h1>Finding beauty in chaos.</h1>
-    <p class="lead">Vivid, restless mixed-media paintings that search for the tender inside the turbulent.</p>
-    <div class="cta-row">
-      <a href="prints.html" class="btn">View the collection <span class="arr">→</span></a>
-      <a href="biography.html" class="btn btn-ghost">The story</a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Egyptian / Dutch Contemporary Artist (1952)</span>
+      <h1 class="display" style="font-size:clamp(2.6rem,6.5vw,4.6rem)">Finding beauty in chaos.</h1>
+      <p class="lead">Vivid, restless mixed-media paintings that search for the tender inside the turbulent.</p>
+      <div class="hero-meta">
+        <div class="stat"><div class="n">2,728</div><div class="l">Netherlands Artfacts ranking</div></div>
+        <div class="stat"><div class="n">291</div><div class="l">Egypt Artfacts ranking</div></div>
+        <div class="stat"><div class="n">7+</div><div class="l">Intl. art fairs</div></div>
+      </div>
+      <div style="margin-top:40px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="prints.html" class="btn">View the collection <span class="arr">→</span></a>
+        <a href="biography.html" class="btn btn-ghost">The story</a>
+      </div>
     </div>
+    <figure class="hero-figure reveal">
+      <img src="art/04.jpg" alt="Sea of Love, 2020 — a painting by Moussa Salman">
+      <figcaption><span class="t">Sea of Love</span><span>Mixed media · 2020</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -136,7 +123,7 @@
       <h3>Limited Editions</h3>
       <p>6 limited editions, certified and signed.</p>
     </div>
-    <p class="lead narrow" style="margin:30px auto 0">Every painting exists in just six archival prints worldwide — and no two are ever the same size. Each edition is produced at its own singular dimension, scaling up to a commanding 140 cm, so every print is a true 1-of-1 original at its scale. When a size sells, it is retired for good — never reprinted, never repeated.</p>
+    <p class="lead narrow" style="margin:30px auto 0">Every painting exists in just six archival prints worldwide, and no two are ever the same size. Each edition is produced at its own singular dimension, scaling up to a commanding 140 cm, so every print is a true 1-of-1 original at its scale. When a size sells, it is retired for good, never reprinted, never repeated.</p>
     <a href="contact.html" class="btn" style="margin-top:34px">Enquire about a work <span class="arr">→</span></a>
   </div>
 </section>
@@ -153,7 +140,7 @@
       <div>
         <h4>Explore</h4>
         <a href="prints.html">Limited Editions</a>
-        <a href="biography.html">Biography</a>
+          <a href="biography.html">Biography</a>
         <a href="reviews.html">Art Reviews</a>
         <a href="exhibitions.html">Exhibitions &amp; Publications</a>
         <a href="awards.html">Prizes &amp; Awards</a>
@@ -161,7 +148,7 @@
       <div>
         <h4>Connect</h4>
         <a href="contact.html">Contact</a>
-        <a href="/cdn-cgi/l/email-protection#2a43444c456a47455f59594b594b46474b4404494547"><span class="__cf_email__" data-cfemail="f891969e97b895978d8b8b998b9994959996d69b9795">[email&#160;protected]</span></a>
+        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
         <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://www.linkedin.com/in/moussa-salman/" target="_blank" rel="noopener">LinkedIn</a>
@@ -183,7 +170,7 @@
   <div class="lb-cap"><span class="t"></span> <span class="y"></span></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="site.js"></script>
+<script src="site.js"></script>
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
   (function(){

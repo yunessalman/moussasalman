@@ -169,13 +169,13 @@ section{padding-block:clamp(56px,9vw,120px)}
   transition:transform .6s var(--ease),filter .6s var(--ease);
 }
 .gallery .item .cap{
-  display:flex;justify-content:space-between;gap:10px;padding:12px 2px 2px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);
-  opacity:0;transform:translateY(-4px);transition:opacity .4s var(--ease),transform .4s var(--ease);
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 3px 2px;
+  font-family:var(--serif);font-size:1.05rem;letter-spacing:0;text-transform:none;color:var(--ink-faint);
 }
-.gallery .item .cap .t{color:var(--ink)}
-.gallery .item .price-tag{display:flex;justify-content:space-between;gap:10px;padding:8px 2px 2px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.gallery .item .cap .t{color:var(--ink);font-weight:600}
+.gallery .item .cap span:last-child{color:var(--ink-soft);font-size:.95rem}
+.gallery .item .price-tag{display:flex;justify-content:space-between;gap:10px;padding:8px 3px 2px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-soft)}
 .gallery .item .price-tag span:last-child{color:var(--ink);font-weight:700}
 .gallery .item:hover img{filter:brightness(.94)}
 .gallery .item:hover .cap{opacity:1;transform:none}
@@ -232,6 +232,9 @@ section{padding-block:clamp(56px,9vw,120px)}
 .lb-ed .pr{color:#fff;font-weight:700;font-size:13px;letter-spacing:.03em;white-space:nowrap;justify-self:end}
 .lb-ed .ed-inq{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,231,218,.7);text-decoration:none;border:1px solid rgba(237,231,218,.28);padding:5px 10px;border-radius:999px;white-space:nowrap;transition:color .25s,border-color .25s,background .25s}
 .lb-ed .ed-inq:hover{color:var(--ink);background:#EDE7DA;border-color:#EDE7DA}
+.lb-ed .ed-escrow{justify-self:end;margin:0;line-height:0}
+.lb-ed .ed-escrow button{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:#EDE7DA;border:1px solid #EDE7DA;padding:6px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .25s,color .25s}
+.lb-ed .ed-escrow button:hover{background:transparent;color:#EDE7DA}
 .lb-enquire{margin-top:22px}
 @media(max-width:820px){
   .lb{align-items:flex-start;overflow:auto}

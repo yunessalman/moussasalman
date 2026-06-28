@@ -45,7 +45,7 @@ window.ARTWORKS = [
 /* 6 limited editions — fixed price ladder, shared by every work.
    Short side (cm) is the base; long side = round(base * ar). */
 window.EDITION_BASES  = [40, 60, 80, 100, 120, 140];
-window.EDITION_PRICES = [4300, 6300, 9300, 12300, 14850, 19600];
+window.EDITION_PRICES = [4300, 6300, 9300, 12300, 14850, 18500];
 window.editionsFor = function(a){
   return window.EDITION_BASES.map(function(b,i){
     var short=b, long=Math.round(b*a.ar);
@@ -57,6 +57,36 @@ window.editionsFor = function(a){
   });
 };
 window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
+
+/* Escrow.com Buy button, per edition.
+   Fixed params from the supplied snippet; only title + price vary by edition. */
+window.escrowFormFor = function(a,e){
+  var sizeCompact = e.size.replace(/\s+/g,'');               /* "40 × 40 cm" -> "40×40cm" */
+  var title = 'Moussa Salman '+a.t+'-'+a.y+' '+e.i+'/6 '+sizeCompact;
+  var px = 'https://t.escrow.com/1px.gif?name=bin&price='+e.price+
+           '&title='+encodeURIComponent(title)+'&user_id=2994648';
+  return '<form class="ed-escrow" action="https://www.escrow.com/checkout" method="post" target="_blank">'+
+    '<input type="hidden" name="type" value="domain_name">'+
+    '<input type="hidden" name="non_initiator_email" value="info@moussasalman.com">'+
+    '<input type="hidden" name="non_initiator_id" value="2994648">'+
+    '<input type="hidden" name="non_initiator_role" value="seller">'+
+    '<input type="hidden" name="title" value="'+title+'">'+
+    '<input type="hidden" name="currency" value="USD">'+
+    '<input type="hidden" name="domain" value="moussasalman.com">'+
+    '<input type="hidden" name="price" value="'+e.price+'">'+
+    '<input type="hidden" name="concierge" value="false">'+
+    '<input type="hidden" name="with_content" value="false">'+
+    '<input type="hidden" name="inspection_period" value="1">'+
+    '<input type="hidden" name="fee_payer" value="seller">'+
+    '<input type="hidden" name="return_url" value="">'+
+    '<input type="hidden" name="button_types" value="buy_now">'+
+    '<input type="hidden" name="auto_accept" value="">'+
+    '<input type="hidden" name="auto_reject" value="">'+
+    '<input type="hidden" name="item_key" value="undefined">'+
+    '<button type="submit">Buy with Escrow</button>'+
+    '<img src="'+px+'" style="display:none" alt="">'+
+    '</form>';
+};
 
 (function(){
   /* ---- mobile menu ---- */
@@ -125,14 +155,10 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
       if(capY)capY.textContent='— '+a.y;
       if(edBox){
         edBox.innerHTML=window.editionsFor(a).map(function(e){
-          var q='contact.html?work='+encodeURIComponent(a.t)+
-                '&edition='+encodeURIComponent(e.i+'/6')+
-                '&size='+encodeURIComponent(e.size)+
-                '&price='+encodeURIComponent(window.fmtUSD(e.price));
           return '<div class="lb-ed"><span class="n">'+e.i+'/6</span>'+
             '<span class="sz">'+e.size+'</span>'+
             '<span class="pr">'+window.fmtUSD(e.price)+'</span>'+
-            '<a class="ed-inq" href="'+q+'">Inquire</a></div>';
+            window.escrowFormFor(a,e)+'</div>';
         }).join('');
       }
       if(enquire)enquire.href='contact.html?work='+encodeURIComponent(a.t);
