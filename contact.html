@@ -27,7 +27,7 @@
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="limitededitions.html">Limited Editions</a>
+      <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
       <a href="biography.html">Biography</a>
       <a href="reviews.html">Art Reviews</a>
@@ -97,7 +97,7 @@
       </div>
       <div>
         <h4>Explore</h4>
-        <a href="limitededitions.html">Limited Editions</a>
+        <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
           <a href="biography.html">Biography</a>
         <a href="reviews.html">Art Reviews</a>
@@ -133,15 +133,6 @@
     var banner=document.getElementById('inqBanner');
     var label='“'+work+'”'+(edition?' — edition '+edition:'');
     if(subj)subj.value='Enquiry about '+label;
-    if(msg){
-      var detail=[];
-      if(edition)detail.push('edition '+edition);
-      if(size)detail.push(size);
-      if(price)detail.push(price);
-      msg.value='Hello Moussa,\n\nI’m interested in “'+work+'”'+
-        (detail.length?' ('+detail.join(', ')+')':'')+'.\n'+
-        'Could you let me know about availability and shipping? Thank you.';
-    }
     if(banner){
       banner.innerHTML='You’re enquiring about <b>'+label+'</b>'+
         (size?' · '+size:'')+(price?' · <b>'+price+'</b>':'')+'.';

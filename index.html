@@ -52,7 +52,7 @@
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="index.html" class="active">Home</a>
-      <a href="limitededitions.html">Limited Editions</a>
+      <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
       <a href="biography.html">Biography</a>
       <a href="reviews.html">Art Reviews</a>
@@ -76,16 +76,23 @@
       <div class="hero-meta">
         <div class="stat"><div class="n">2,728</div><div class="l">Netherlands Artfacts ranking</div></div>
         <div class="stat"><div class="n">291</div><div class="l">Egypt Artfacts ranking</div></div>
-        <div class="stat"><div class="n">7+</div><div class="l">Intl. art fairs</div></div>
+        <div class="stat"><div class="n">7+</div><div class="l">International art fairs</div></div>
       </div>
       <div style="margin-top:40px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="limitededitions.html" class="btn">View the collection <span class="arr">→</span></a>
         <a href="biography.html" class="btn btn-ghost">The story</a>
       </div>
     </div>
-    <figure class="hero-figure reveal">
-      <img src="art/02.jpg" alt="Nature Call, 2023 — a painting by Moussa Salman">
-      <figcaption><span class="t">Nature Call</span><span>Mixed media · 2023</span></figcaption>
+    <figure class="hero-figure reveal hero-slideshow">
+      <div class="hero-slides" id="heroSlides">
+        <img class="hs-img is-active" src="art/02.jpg" data-t="Nature Call" data-y="2023" alt="Nature Call, 2023 — a painting by Moussa Salman">
+        <img class="hs-img" src="art/13.jpg" data-t="Free Like a Bird" data-y="2021" alt="Free Like a Bird, 2021 — a painting by Moussa Salman">
+        <img class="hs-img" src="art/22.jpg" data-t="The Hurricane" data-y="2020" alt="The Hurricane, 2020 — a painting by Moussa Salman">
+        <img class="hs-img" src="art/04.jpg" data-t="Sea of Love" data-y="2020" alt="Sea of Love, 2020 — a painting by Moussa Salman">
+        <img class="hs-img" src="art/30.jpg" data-t="The Little Girl" data-y="2021" alt="The Little Girl, 2021 — a painting by Moussa Salman">
+        <img class="hs-img" src="art/18.jpg" data-t="Lion Hunting" data-y="2020" alt="Lion Hunting, 2020 — a painting by Moussa Salman">
+      </div>
+      <figcaption><span class="t" id="hsTitle">Nature Call</span><span id="hsMeta">Mixed media · 2023</span></figcaption>
     </figure>
   </div>
 </section>
@@ -141,7 +148,7 @@
       </div>
       <div>
         <h4>Explore</h4>
-        <a href="limitededitions.html">Limited Editions</a>
+        <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
           <a href="biography.html">Biography</a>
         <a href="reviews.html">Art Reviews</a>
@@ -176,6 +183,21 @@
 <script src="site.js"></script>
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){
+    var slides=document.querySelectorAll('#heroSlides .hs-img');
+    if(slides.length<2)return;
+    var title=document.getElementById('hsTitle'), meta=document.getElementById('hsMeta');
+    var i=0;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    setInterval(function(){
+      slides[i].classList.remove('is-active');
+      i=(i+1)%slides.length;
+      var s=slides[i];
+      s.classList.add('is-active');
+      if(title)title.textContent=s.dataset.t;
+      if(meta)meta.textContent='Mixed media · '+s.dataset.y;
+    },4500);
+  })();
   (function(){
     var CUR=[0,2,6,12,9,21,18,3,20];
     var grid=document.getElementById('artGrid');

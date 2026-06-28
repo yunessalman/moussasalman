@@ -149,6 +149,11 @@ section{padding-block:clamp(56px,9vw,120px)}
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
 }
 .hero-figure figcaption .t{color:var(--ink)}
+/* hero slideshow */
+.hero-slideshow .hero-slides{position:relative;aspect-ratio:3/2;overflow:hidden;box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
+.hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;box-shadow:none;opacity:0;transition:opacity 1.2s var(--ease)}
+.hero-slideshow .hs-img.is-active{opacity:1}
+.hero-slideshow figcaption .t,.hero-slideshow figcaption span{transition:opacity .5s var(--ease)}
 
 /* ---------- section heading ---------- */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
@@ -324,7 +329,7 @@ section{padding-block:clamp(56px,9vw,120px)}
     padding:40px var(--pad);transform:translateX(100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s linear .45s;z-index:55;
   }
   .menu-open .nav{transform:none;visibility:visible;transition:transform .45s var(--ease),visibility 0s}
-  .nav a{font-family:var(--serif);font-size:1.5rem;line-height:1.15;color:var(--ink);padding:8px 0}
+  .nav a{font-family:var(--serif);font-size:1.5rem;line-height:1.15;color:var(--ink);padding:8px 0;white-space:normal;overflow-wrap:break-word;max-width:100%}
   .nav a::after{display:none}
   .nav .cta{margin-top:18px;font-size:1rem;padding:12px 26px}
   .nav-scrim{position:fixed;inset:0;background:rgba(27,24,19,.4);opacity:0;visibility:hidden;transition:.4s;z-index:54}
@@ -334,6 +339,18 @@ section{padding-block:clamp(56px,9vw,120px)}
 
 /* hero responsive */
 @media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero{padding-top:clamp(20px,5vw,40px);padding-bottom:clamp(28px,6vw,48px)}
+  .hero-grid{grid-template-columns:1fr;gap:clamp(22px,5vw,32px)}
   .hero-figure{order:-1}
+  .hero-copy .display{font-size:clamp(2.2rem,8vw,3.4rem)!important;margin:.1em 0 .4em}
+  .hero-meta{gap:18px 28px;margin-top:26px}
+}
+@media(max-width:560px){
+  .hero-copy .display{font-size:clamp(2rem,8.6vw,2.8rem)!important}
+  .hero-copy .lead{font-size:1.02rem}
+  .hero-meta{gap:14px 20px;margin-top:22px}
+  .hero-meta .stat{flex:1 1 40%}
+  .hero-meta .stat .n{font-size:1.55rem}
+  .hero-meta .stat .l{font-size:9px;letter-spacing:.1em;margin-top:5px}
+  .hero-figure figcaption{font-size:10px}
 }
