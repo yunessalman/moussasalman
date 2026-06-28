@@ -4,7 +4,7 @@ Static site. No build step.
 
 ## Structure
 - `index.html` — Home
-- `limitededitions.html` — Limited Editions (pricing + per-edition Escrow buy buttons)
+- `limitededitions.html` — Limited Editions (pricing + per-edition inquiry)
 - `biography.html`, `reviews.html`, `exhibitions.html`, `awards.html`, `contact.html`
 - `site.js` — artwork catalogue + lightbox + gallery + contact prefill
 - `styles.css` — all styles

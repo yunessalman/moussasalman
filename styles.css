@@ -232,9 +232,6 @@ section{padding-block:clamp(56px,9vw,120px)}
 .lb-ed .pr{color:#fff;font-weight:700;font-size:13px;letter-spacing:.03em;white-space:nowrap;justify-self:end}
 .lb-ed .ed-inq{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,231,218,.7);text-decoration:none;border:1px solid rgba(237,231,218,.28);padding:5px 10px;border-radius:999px;white-space:nowrap;transition:color .25s,border-color .25s,background .25s}
 .lb-ed .ed-inq:hover{color:var(--ink);background:#EDE7DA;border-color:#EDE7DA}
-.lb-ed .ed-escrow{justify-self:end;margin:0;line-height:0}
-.lb-ed .ed-escrow button{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:#EDE7DA;border:1px solid #EDE7DA;padding:6px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .25s,color .25s}
-.lb-ed .ed-escrow button:hover{background:transparent;color:#EDE7DA}
 .lb-enquire{margin-top:22px}
 @media(max-width:820px){
   .lb{align-items:flex-start;overflow:auto}
