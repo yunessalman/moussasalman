@@ -81,7 +81,7 @@
       <div class="hero-meta">
         <div class="stat"><div class="n">2,728</div><div class="l">Netherlands Artfacts ranking</div></div>
         <div class="stat"><div class="n">291</div><div class="l">Egypt Artfacts ranking</div></div>
-        <div class="stat"><div class="n">7+</div><div class="l">International art fairs</div></div>
+        <div class="stat"><div class="n">21</div><div class="l">Exhibitions &amp; art fairs</div></div>
       </div>
       <div style="margin-top:40px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="limitededitions.html" class="btn">View the collection <span class="arr">→</span></a>
@@ -91,11 +91,6 @@
     <figure class="hero-figure reveal hero-slideshow">
       <div class="hero-slides" id="heroSlides">
         <img class="hs-img is-active" src="art/02.jpg" data-t="Nature Call" data-y="2023" alt="Nature Call, 2023 — a painting by Moussa Salman">
-        <img class="hs-img" src="art/13.jpg" data-t="Free Like a Bird" data-y="2021" alt="Free Like a Bird, 2021 — a painting by Moussa Salman">
-        <img class="hs-img" src="art/22.jpg" data-t="The Hurricane" data-y="2020" alt="The Hurricane, 2020 — a painting by Moussa Salman">
-        <img class="hs-img" src="art/04.jpg" data-t="Sea of Love" data-y="2020" alt="Sea of Love, 2020 — a painting by Moussa Salman">
-        <img class="hs-img" src="art/30.jpg" data-t="The Little Girl" data-y="2021" alt="The Little Girl, 2021 — a painting by Moussa Salman">
-        <img class="hs-img" src="art/18.jpg" data-t="Lion Hunting" data-y="2020" alt="Lion Hunting, 2020 — a painting by Moussa Salman">
       </div>
       <figcaption><span class="t" id="hsTitle">Nature Call</span><span id="hsMeta">Mixed media · 2023</span></figcaption>
     </figure>
@@ -189,11 +184,21 @@
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
   (function(){
-    var slides=document.querySelectorAll('#heroSlides .hs-img');
-    if(slides.length<2)return;
+    var box=document.getElementById('heroSlides');
+    if(!box||!window.ARTWORKS)return;
     var title=document.getElementById('hsTitle'), meta=document.getElementById('hsMeta');
-    var i=0;
+    var arr=window.ARTWORKS.slice();
+    for(var k=arr.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var tmp=arr[k];arr[k]=arr[j];arr[j]=tmp;}
+    var pick=arr.slice(0,6);
+    box.innerHTML=pick.map(function(a,idx){
+      return '<img class="hs-img'+(idx===0?' is-active':'')+'" src="art/'+a.n+'.jpg" data-t="'+a.t+'" data-y="'+a.y+'" alt="'+a.t+', '+a.y+' — a painting by Moussa Salman">';
+    }).join('');
+    var slides=box.querySelectorAll('.hs-img');
+    if(title)title.textContent=pick[0].t;
+    if(meta)meta.textContent='Mixed media · '+pick[0].y;
+    if(slides.length<2)return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var i=0;
     setInterval(function(){
       slides[i].classList.remove('is-active');
       i=(i+1)%slides.length;
