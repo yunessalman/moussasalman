@@ -34,12 +34,18 @@
   .acquire1 p{color:var(--ink-soft);font-size:1.05rem;line-height:1.6}
 
   /* hero slideshow — critical (inlined so it works even if cached styles.css is stale) */
-  .hero-slideshow .hero-slides{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper-3);box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
-  .hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;padding:clamp(14px,2.4vw,30px);box-sizing:border-box;object-fit:contain;opacity:0;transition:opacity 1.2s ease}
+  .hero-slideshow .hero-slides{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000;border:clamp(7px,1vw,12px) solid #000;box-shadow:0 40px 80px -40px rgba(27,24,19,.5);transition:aspect-ratio .7s ease}
+  .hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;padding:0;box-sizing:border-box;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
   .hero-slideshow .hs-img.is-active{opacity:1}
+  .hero-slideshow{position:relative}
+  .hero-slideshow figcaption{position:static;display:block;width:fit-content;margin:18px 0 0 auto;text-align:left;max-width:85%;background:#fff;color:var(--ink);padding:14px 18px;border:1px solid rgba(27,24,19,.08);box-shadow:0 10px 28px -12px rgba(27,24,19,.4)}
+  .hero-slideshow figcaption .t{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.02rem,1.4vw,1.3rem);line-height:1.18;letter-spacing:0;text-transform:none;color:var(--ink)}
+  .hero-slideshow figcaption #hsMeta{display:block;margin-top:5px;text-align:right;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
   @media(max-width:560px){
-    .hero-slideshow .hero-slides{aspect-ratio:1/1}
-    .hero-slideshow .hs-img{padding:clamp(12px,4vw,20px)}
+    .hero-slideshow .hs-img{padding:0}
+    .hero-slideshow figcaption{margin-top:14px;padding:11px 14px;max-width:90%}
+    .hero-slideshow figcaption .t{font-size:1rem}
+    .hero-slideshow figcaption #hsMeta{font-size:9px}
   }
 
   /* design switch pill */
@@ -97,7 +103,7 @@
       <div class="hero-slides" id="heroSlides">
         <img class="hs-img is-active" src="art/02.jpg" data-t="Nature Call" data-y="2023" alt="Nature Call, 2023 — a painting by Moussa Salman">
       </div>
-      <figcaption><span class="t" id="hsTitle">Nature Call</span><span id="hsMeta">Mixed media · 2023</span></figcaption>
+      <figcaption><span class="t" id="hsTitle">Nature Call</span><span id="hsMeta">2023</span></figcaption>
     </figure>
   </div>
 </section>
@@ -199,8 +205,11 @@
       return '<img class="hs-img'+(idx===0?' is-active':'')+'" src="art/'+a.n+'.jpg" data-t="'+a.t+'" data-y="'+a.y+'" alt="'+a.t+', '+a.y+' — a painting by Moussa Salman">';
     }).join('');
     var slides=box.querySelectorAll('.hs-img');
+    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(w&&h)box.style.aspectRatio=w+' / '+h;}
+    function applyRatio(img){if(img.complete&&img.naturalWidth)setRatio(img);else img.addEventListener('load',function(){setRatio(img);},{once:true});}
     if(title)title.textContent=pick[0].t;
-    if(meta)meta.textContent='Mixed media · '+pick[0].y;
+    if(meta)meta.textContent=pick[0].y;
+    applyRatio(slides[0]);
     if(slides.length<2)return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
     var i=0;
@@ -209,8 +218,9 @@
       i=(i+1)%slides.length;
       var s=slides[i];
       s.classList.add('is-active');
+      applyRatio(s);
       if(title)title.textContent=s.dataset.t;
-      if(meta)meta.textContent='Mixed media · '+s.dataset.y;
+      if(meta)meta.textContent=s.dataset.y;
     },4500);
   })();
   (function(){
