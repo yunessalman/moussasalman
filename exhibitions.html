@@ -3,8 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exhibitions &amp; Publications — Moussa Salman</title>
-<meta name="description" content="Selected exhibitions and publications featuring the work of Moussa Salman, from Amsterdam to Dubai and Houston.">
+<title>Exhibitions &amp; Publications | Moussa Salman</title>
+<meta name="description" content="Museum exhibitions, international art fairs and publications featuring Moussa Salman, from Amsterdam and Dubai to New York, Miami and Seoul.">
+<link rel="canonical" href="https://moussasalman.com/exhibitions.html">
+<meta name="author" content="Moussa Salman">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moussa Salman">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Exhibitions & Publications — Moussa Salman">
+<meta property="og:description" content="Museum exhibitions, international art fairs and publications featuring Moussa Salman, from Amsterdam and Dubai to New York, Miami and Seoul.">
+<meta property="og:url" content="https://moussasalman.com/exhibitions.html">
+<meta property="og:image" content="https://moussasalman.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Painting by Moussa Salman with his name and title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exhibitions & Publications — Moussa Salman">
+<meta name="twitter:description" content="Museum exhibitions, international art fairs and publications featuring Moussa Salman, from Amsterdam and Dubai to New York, Miami and Seoul.">
+<meta name="twitter:image" content="https://moussasalman.com/img/og-image.jpg">
+<meta name="twitter:image:alt" content="Painting by Moussa Salman with his name and title">
+<meta name="theme-color" content="#1B1813">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="img/favicon.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css?v=2">
@@ -42,7 +65,19 @@
   .cert-lb .cert-count{position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
     font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:rgba(245,242,236,.8);display:none}
   .cert-lb.is-gallery .cert-count{display:block}
+  /* header slideshow — random "View" images */
+  .page-band .wrap{position:relative}
+  .exh-hero{position:absolute;top:0;right:clamp(10px,2vw,32px);width:clamp(280px,32vw,420px);z-index:1}
+  .exh-hero .ehs{position:relative;aspect-ratio:4/3;overflow:hidden;background:transparent;
+    box-shadow:0 30px 60px -30px rgba(27,24,19,.55);transition:aspect-ratio .7s ease}
+  .exh-hero .ehs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity 1.1s ease}
+  .exh-hero .ehs img.is-active{opacity:1}
+  @media(max-width:980px){.exh-hero{display:none}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moussasalman.com/"},{"@type":"ListItem","position":2,"name":"Exhibitions & Publications","item":"https://moussasalman.com/exhibitions.html"}]}
+</script>
 </head>
 <body>
 
@@ -73,6 +108,7 @@
     <span class="eyebrow">Exhibitions &amp; Publications</span>
     <h1>Shown across<br>three continents</h1>
     <p class="lead">A full record of museum exhibitions, international art fairs, group shows, catalogues, art books and magazine features.</p>
+    <div class="exh-hero" aria-hidden="true"><div class="ehs" id="exhSlides"></div></div>
   </div>
 </section>
 
@@ -245,6 +281,35 @@
 <script src="site.js?v=2"></script>
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){
+    var box=document.getElementById('exhSlides');
+    if(!box)return;
+    var set=[];
+    document.querySelectorAll('.row.has-cert').forEach(function(r){
+      r.getAttribute('data-cert').split(',').forEach(function(src){
+        src=src.trim(); if(src&&set.indexOf(src)<0)set.push(src);
+      });
+    });
+    if(!set.length){box.parentNode.style.display='none';return;}
+    for(var k=set.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=set[k];set[k]=set[j];set[j]=t;}
+    var pick=set.slice(0,Math.min(8,set.length));
+    box.innerHTML=pick.map(function(s,i){
+      return '<img class="ehs-img'+(i===0?' is-active':'')+'" src="'+s+'" alt="" loading="lazy">';
+    }).join('');
+    var slides=box.querySelectorAll('img');
+    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return;var r=w/h;if(r<0.95)r=0.95;if(r>1.6)r=1.6;box.style.aspectRatio=r;}
+    function applyRatio(img){if(img.complete&&img.naturalWidth)setRatio(img);else img.addEventListener('load',function(){setRatio(img);},{once:true});}
+    applyRatio(slides[0]);
+    if(slides.length<2)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var i=0;
+    setInterval(function(){
+      slides[i].classList.remove('is-active');
+      i=(i+1)%slides.length;
+      slides[i].classList.add('is-active');
+      applyRatio(slides[i]);
+    },4000);
+  })();
   (function(){
     var lb=document.querySelector('.cert-lb'), img=lb.querySelector('img'),
         count=lb.querySelector('.cert-count');

@@ -3,10 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moussa Salman — Contemporary Artist</title>
-<meta name="description" content="Moussa Salman is an Egyptian/Dutch contemporary artist working in mixed media. 6 limited editions, certified and signed.">
+<title>Moussa Salman | Dutch-Egyptian Contemporary Artist</title>
+<meta name="description" content="Vivid mixed-media paintings by Dutch-Egyptian artist Moussa Salman, finding beauty in chaos. Explore original works and signed limited editions.">
+<link rel="canonical" href="https://moussasalman.com/">
+<meta name="author" content="Moussa Salman">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moussa Salman">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Moussa Salman | Dutch-Egyptian Contemporary Artist">
+<meta property="og:description" content="Vivid mixed-media paintings by Dutch-Egyptian artist Moussa Salman, finding beauty in chaos. Explore original works and signed limited editions.">
+<meta property="og:url" content="https://moussasalman.com/">
+<meta property="og:image" content="https://moussasalman.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Painting by Moussa Salman with his name and title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Moussa Salman | Dutch-Egyptian Contemporary Artist">
+<meta name="twitter:description" content="Vivid mixed-media paintings by Dutch-Egyptian artist Moussa Salman, finding beauty in chaos. Explore original works and signed limited editions.">
+<meta name="twitter:image" content="https://moussasalman.com/img/og-image.jpg">
+<meta name="twitter:image:alt" content="Painting by Moussa Salman with his name and title">
+<meta name="theme-color" content="#1B1813">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="img/favicon.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","@id":"https://moussasalman.com/#moussa","name":"Moussa Salman","jobTitle":"Contemporary Artist","description":"Self-taught Dutch-Egyptian contemporary artist based in Amsterdam.","nationality":["Egyptian","Dutch"],"birthDate":"1952","birthPlace":{"@type":"Place","name":"Egypt"},"homeLocation":{"@type":"Place","name":"Amsterdam, Netherlands"},"url":"https://moussasalman.com/","mainEntityOfPage":"https://moussasalman.com/","image":"https://moussasalman.com/img/moussa-salman.jpg","email":"info@moussasalman.com","address":{"@type":"PostalAddress","addressLocality":"Amsterdam","addressCountry":"NL"},"sameAs":["https://www.instagram.com/moussasalmanart/","https://www.facebook.com/MoussaSalmanArt/","https://www.linkedin.com/in/moussa-salman/","https://nationaalatelier.nl/kunstenaar/2674/moussa-salman"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Moussa Salman","url":"https://moussasalman.com/","inLanguage":"en","publisher":{"@id":"https://moussasalman.com/#moussa"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="art/02.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css?v=2">
 <style>
   /* ===== Option A — Salon (light) ===== */
@@ -205,7 +235,7 @@
       return '<img class="hs-img'+(idx===0?' is-active':'')+'" src="art/'+a.n+'.jpg" data-t="'+a.t+'" data-y="'+a.y+'" alt="'+a.t+', '+a.y+' — a painting by Moussa Salman">';
     }).join('');
     var slides=box.querySelectorAll('.hs-img');
-    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(w&&h)box.style.aspectRatio=w+' / '+h;}
+    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return;var r=w/h;if(r<0.78)r=0.78;if(r>1.6)r=1.6;box.style.aspectRatio=r;}
     function applyRatio(img){if(img.complete&&img.naturalWidth)setRatio(img);else img.addEventListener('load',function(){setRatio(img);},{once:true});}
     if(title)title.textContent=pick[0].t;
     if(meta)meta.textContent=pick[0].y;

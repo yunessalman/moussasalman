@@ -138,7 +138,7 @@ section{padding-block:clamp(56px,9vw,120px)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding-top:clamp(16px,3vw,44px);padding-bottom:clamp(40px,6vw,72px)}
-.hero-grid{display:grid;grid-template-columns:1.05fr 1.25fr;gap:clamp(28px,5vw,72px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1.25fr;gap:clamp(28px,5vw,72px);align-items:start}
 .hero-copy .display{margin:.18em 0 .5em}
 .hero-meta{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
 .hero-meta .stat .n{font-family:var(--serif);font-size:1.9rem;line-height:1}
