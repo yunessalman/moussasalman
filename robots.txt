@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moussasalman.com/sitemap.xml
+Sitemap: https://moussasalmanart.com/sitemap.xml
