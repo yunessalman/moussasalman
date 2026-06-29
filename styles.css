@@ -94,7 +94,8 @@ section{padding-block:clamp(56px,9vw,120px)}
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;flex-direction:column;line-height:1}
 .brand .name{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.01em}
-.brand .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-faint);margin-top:5px}
+.brand .sub{font-family:var(--mono);font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);margin-top:5px;white-space:nowrap}
+@media(max-width:420px){.brand .sub{letter-spacing:.18em;font-size:8px}}
 .nav{display:flex;align-items:center;gap:22px}
 .nav a{
   font-size:13px;letter-spacing:.02em;color:var(--ink-soft);white-space:nowrap;
@@ -149,11 +150,16 @@ section{padding-block:clamp(56px,9vw,120px)}
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
 }
 .hero-figure figcaption .t{color:var(--ink)}
-/* hero slideshow */
-.hero-slideshow .hero-slides{position:relative;aspect-ratio:3/2;overflow:hidden;box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
-.hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;box-shadow:none;opacity:0;transition:opacity 1.2s var(--ease)}
+/* hero slideshow — paintings shown in full (no crop) on a soft mat */
+.hero-slideshow .hero-slides{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper-3);
+  box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
+.hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;padding:clamp(14px,2.4vw,30px);box-sizing:border-box;object-fit:contain;opacity:0;transition:opacity 1.2s var(--ease)}
 .hero-slideshow .hs-img.is-active{opacity:1}
 .hero-slideshow figcaption .t,.hero-slideshow figcaption span{transition:opacity .5s var(--ease)}
+@media(max-width:560px){
+  .hero-slideshow .hero-slides{aspect-ratio:1/1}
+  .hero-slideshow .hs-img{padding:clamp(12px,4vw,20px)}
+}
 
 /* ---------- section heading ---------- */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap}

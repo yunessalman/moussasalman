@@ -34,9 +34,13 @@
   .acquire1 p{color:var(--ink-soft);font-size:1.05rem;line-height:1.6}
 
   /* hero slideshow — critical (inlined so it works even if cached styles.css is stale) */
-  .hero-slideshow .hero-slides{position:relative;aspect-ratio:3/2;overflow:hidden;box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
-  .hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;box-shadow:none;opacity:0;transition:opacity 1.2s ease}
+  .hero-slideshow .hero-slides{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper-3);box-shadow:0 40px 80px -40px rgba(27,24,19,.5)}
+  .hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;padding:clamp(14px,2.4vw,30px);box-sizing:border-box;object-fit:contain;opacity:0;transition:opacity 1.2s ease}
   .hero-slideshow .hs-img.is-active{opacity:1}
+  @media(max-width:560px){
+    .hero-slideshow .hero-slides{aspect-ratio:1/1}
+    .hero-slideshow .hs-img{padding:clamp(12px,4vw,20px)}
+  }
 
   /* design switch pill */
   .switch{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:10px;background:var(--ink);color:#F5F2EC;padding:11px 18px;border-radius:100px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 14px 34px -12px rgba(0,0,0,.55)}
@@ -53,7 +57,7 @@
   <div class="wrap">
     <a class="brand" href="index.html">
       <span class="name">Moussa Salman</span>
-      <span class="sub">Contemporary Artist</span>
+      <span class="sub">Contemporary Artist (1952)</span>
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="index.html" class="active">Home</a>
@@ -81,7 +85,8 @@
       <div class="hero-meta">
         <div class="stat"><div class="n">2,728</div><div class="l">Netherlands Artfacts ranking</div></div>
         <div class="stat"><div class="n">291</div><div class="l">Egypt Artfacts ranking</div></div>
-        <div class="stat"><div class="n">21</div><div class="l">Exhibitions &amp; art fairs</div></div>
+        <div class="stat"><div class="n">44</div><div class="l">Exhibitions &amp; publications</div></div>
+        <div class="stat"><div class="n">18</div><div class="l">Prizes &amp; awards</div></div>
       </div>
       <div style="margin-top:40px;display:flex;gap:14px;flex-wrap:wrap">
         <a href="limitededitions.html" class="btn">View the collection <span class="arr">→</span></a>
@@ -189,7 +194,7 @@
     var title=document.getElementById('hsTitle'), meta=document.getElementById('hsMeta');
     var arr=window.ARTWORKS.slice();
     for(var k=arr.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var tmp=arr[k];arr[k]=arr[j];arr[j]=tmp;}
-    var pick=arr.slice(0,6);
+    var pick=arr.slice(0,8);
     box.innerHTML=pick.map(function(a,idx){
       return '<img class="hs-img'+(idx===0?' is-active':'')+'" src="art/'+a.n+'.jpg" data-t="'+a.t+'" data-y="'+a.y+'" alt="'+a.t+', '+a.y+' — a painting by Moussa Salman">';
     }).join('');

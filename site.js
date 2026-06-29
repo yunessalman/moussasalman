@@ -36,7 +36,6 @@ window.ARTWORKS = [
   {n:'31', t:'Worries',               y:2021, ar:1.231},
   {n:'32', t:'It Is War',             y:2022, ar:1.328},
   {n:'33', t:'Nature Attacks Back',   y:2020, ar:1.509},
-  {n:'34', t:'Sitting with Myself',   y:2019, ar:1.333},
   {n:'35', t:'Stay Safe',             y:2020, ar:1.333},
   {n:'36', t:'Alien Refugee',         y:2019, ar:1.333},
   {n:'37', t:'Struggle',              y:2019, ar:1.333},
