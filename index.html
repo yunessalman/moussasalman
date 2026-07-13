@@ -24,6 +24,7 @@
 <meta name="twitter:image" content="https://moussasalman.com/img/og-image.jpg">
 <meta name="twitter:image:alt" content="Painting by Moussa Salman with his name and title">
 <meta name="theme-color" content="#1B1813">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="img/favicon.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -68,6 +69,12 @@
   .hero-slideshow .hs-img{position:absolute;inset:0;width:100%;height:100%;padding:0;box-sizing:border-box;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
   .hero-slideshow .hs-img.is-active{opacity:1}
   .hero-slideshow{position:relative}
+  .hero-slideshow .hs-below{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-top:18px}
+  .hero-slideshow .hs-below figcaption{margin:0}
+  .hero-slideshow .hs-controls{display:flex;gap:8px;flex-shrink:0}
+  .hero-slideshow .hs-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);border:1px solid rgba(27,24,19,.25);cursor:pointer;font-size:20px;line-height:1;padding:0;transition:background .2s ease,color .2s ease}
+  .hero-slideshow .hs-btn:hover{background:#000;color:#fff}
+  .hero-slideshow .hs-btn.hs-toggle{font-size:13px;letter-spacing:1px}
   .hero-slideshow figcaption{position:static;display:block;width:fit-content;margin:18px 0 0 auto;text-align:left;max-width:85%;background:#fff;color:var(--ink);padding:14px 18px;border:1px solid rgba(27,24,19,.08);box-shadow:0 10px 28px -12px rgba(27,24,19,.4)}
   .hero-slideshow figcaption .t{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.02rem,1.4vw,1.3rem);line-height:1.18;letter-spacing:0;text-transform:none;color:var(--ink)}
   .hero-slideshow figcaption #hsMeta{display:block;margin-top:5px;text-align:right;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
@@ -201,7 +208,7 @@
       <div>
         <h4>Connect</h4>
         <a href="contact.html">Contact</a>
-        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
+        <a href="/cdn-cgi/l/email-protection#167f787079567b796365657765777a7b77783875797b"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8d5d7cdcbcbd9cbd9d4d5d9d696dbd7d5">[email&#160;protected]</span></a>
         <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://www.linkedin.com/in/moussa-salman/" target="_blank" rel="noopener">LinkedIn</a>
@@ -223,7 +230,7 @@
   <div class="lb-cap"><span class="t"></span> <span class="y"></span></div>
 </div>
 
-<script src="site.js?v=2"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="site.js?v=2"></script>
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
   (function(){
@@ -243,17 +250,43 @@
     if(meta)meta.textContent=pick[0].y;
     applyRatio(slides[0]);
     if(slides.length<2)return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var i=0;
-    setInterval(function(){
+    var i=0,timer=null;
+    var PAUSE='\u275A\u275A',PLAY='\u25B6\uFE0E';
+    var ctr=document.createElement('div');
+    ctr.className='hs-controls';
+    ctr.innerHTML='<button class="hs-btn hs-prev" type="button" aria-label="Previous painting">\u2039</button><button class="hs-btn hs-toggle" type="button" aria-label="Pause slideshow">'+PAUSE+'</button><button class="hs-btn hs-next" type="button" aria-label="Next painting">\u203A</button>';
+    var cap=box.parentElement.querySelector('figcaption');
+    var row=document.createElement('div');
+    row.className='hs-below';
+    box.parentElement.insertBefore(row,cap||null);
+    row.appendChild(ctr);
+    if(cap)row.appendChild(cap);
+    var btnPrev=ctr.querySelector('.hs-prev'),btnToggle=ctr.querySelector('.hs-toggle'),btnNext=ctr.querySelector('.hs-next');
+    function show(n){
       slides[i].classList.remove('is-active');
-      i=(i+1)%slides.length;
+      i=(n+slides.length)%slides.length;
       var s=slides[i];
       s.classList.add('is-active');
       applyRatio(s);
       if(title)title.textContent=s.dataset.t;
       if(meta)meta.textContent=s.dataset.y;
-    },4500);
+    }
+    function start(){
+      if(timer)return;
+      timer=setInterval(function(){show(i+1);},4500);
+      btnToggle.textContent=PAUSE;
+      btnToggle.setAttribute('aria-label','Pause slideshow');
+    }
+    function stop(){
+      clearInterval(timer);timer=null;
+      btnToggle.textContent=PLAY;
+      btnToggle.setAttribute('aria-label','Play slideshow');
+    }
+    btnPrev.addEventListener('click',function(){stop();show(i-1);});
+    btnNext.addEventListener('click',function(){stop();show(i+1);});
+    btnToggle.addEventListener('click',function(){timer?stop():start();});
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){stop();}
+    else{start();}
   })();
   (function(){
     var CUR=[0,2,6,12,9,21,18,3,20];
