@@ -174,13 +174,29 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
 
   document.addEventListener('DOMContentLoaded',function(){
     initMenu();renderGallery();initLightbox();initReveal();
-    /* contact form: graceful no-backend handler */
+    /* contact form: Formspree (AJAX) */
     var f=document.getElementById('contactForm');
     if(f)f.addEventListener('submit',function(e){
       e.preventDefault();
       var note=document.getElementById('formNote');
-      if(note)note.classList.add('show');
-      f.reset();
+      var btn=f.querySelector('button[type="submit"]');
+      if(btn)btn.disabled=true;
+      fetch('https://formspree.io/f/mqerklrg',{
+        method:'POST',
+        body:new FormData(f),
+        headers:{'Accept':'application/json'}
+      }).then(function(res){
+        if(res.ok){
+          if(note){note.textContent='Thank you \u2014 your message has been sent. I hope to respond within 24 hours.';note.classList.add('show');}
+          f.reset();
+        }else{
+          if(note){note.textContent='Something went wrong \u2014 please email info@moussasalman.com directly.';note.classList.add('show');}
+        }
+      }).catch(function(){
+        if(note){note.textContent='Something went wrong \u2014 please email info@moussasalman.com directly.';note.classList.add('show');}
+      }).finally(function(){
+        if(btn)btn.disabled=false;
+      });
     });
   });
 })();

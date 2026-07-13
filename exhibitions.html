@@ -78,7 +78,7 @@
   .exh-hero .hs-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);border:1px solid rgba(27,24,19,.25);cursor:pointer;font-size:20px;line-height:1;padding:0;transition:background .2s ease,color .2s ease}
   .exh-hero .hs-btn:hover{background:#000;color:#fff}
   .exh-hero .hs-btn.hs-toggle{font-size:13px;letter-spacing:1px}
-  @media(max-width:980px){.exh-hero{display:none}}
+  @media(max-width:980px){.exh-hero{position:static;width:100%;max-width:420px;margin-top:30px}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moussasalman.com/"},{"@type":"ListItem","position":2,"name":"Exhibitions & Publications","item":"https://moussasalman.com/exhibitions.html"}]}
@@ -254,6 +254,7 @@
       </div>
       <div>
         <h4>Explore</h4>
+        <a href="index.html">Home</a>
         <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
           <a href="biography.html">Biography</a>
@@ -304,7 +305,7 @@
       return '<img class="ehs-img'+(i===0?' is-active':'')+'" src="'+s+'" alt="" loading="lazy">';
     }).join('');
     var slides=box.querySelectorAll('img');
-    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return;var r=w/h;if(r<0.95)r=0.95;if(r>1.6)r=1.6;box.style.aspectRatio=r;}
+    function setRatio(img){var w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return;var r=w/h;if(r<0.6)r=0.6;if(r>1.7)r=1.7;box.style.aspectRatio=r;}
     function applyRatio(img){if(img.complete&&img.naturalWidth)setRatio(img);else img.addEventListener('load',function(){setRatio(img);},{once:true});}
     applyRatio(slides[0]);
     if(slides.length<2)return;

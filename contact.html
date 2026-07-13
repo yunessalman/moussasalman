@@ -81,11 +81,15 @@
 <section>
   <div class="wrap contact-grid">
     <div class="reveal">
-      <form id="contactForm">
+      <form id="contactForm" action="https://formspree.io/f/mqerklrg" method="POST">
         <div id="inqBanner"></div>
         <div class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="cf-company">Company <span style="color:var(--ink-faint);font-weight:400;text-transform:none;letter-spacing:.02em">(optional)</span></label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization">
         </div>
         <div class="field">
           <label for="cf-email">Email</label>
@@ -126,6 +130,7 @@
       </div>
       <div>
         <h4>Explore</h4>
+        <a href="index.html">Home</a>
         <a href="limitededitions.html">6 Limited Editions</a>
       <a href="originals.html">Originals</a>
           <a href="biography.html">Biography</a>
