@@ -24,6 +24,7 @@
 <meta name="twitter:image" content="https://moussasalman.com/img/og-image.jpg">
 <meta name="twitter:image:alt" content="Painting by Moussa Salman with his name and title">
 <meta name="theme-color" content="#1B1813">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="img/favicon.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -73,6 +74,10 @@
   .exh-hero .ehs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity 1.1s ease}
   .exh-hero .ehs img.is-active{opacity:1}
+  .exh-hero .hs-controls{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+  .exh-hero .hs-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);border:1px solid rgba(27,24,19,.25);cursor:pointer;font-size:20px;line-height:1;padding:0;transition:background .2s ease,color .2s ease}
+  .exh-hero .hs-btn:hover{background:#000;color:#fff}
+  .exh-hero .hs-btn.hs-toggle{font-size:13px;letter-spacing:1px}
   @media(max-width:980px){.exh-hero{display:none}}
 </style>
 <script type="application/ld+json">
@@ -110,7 +115,7 @@
     <span class="eyebrow">Exhibitions &amp; Publications</span>
     <h1>Shown across<br>three continents</h1>
     <p class="lead">A full record of museum exhibitions, international art fairs, group shows, catalogues, art books and magazine features.</p>
-    <div class="exh-hero" aria-hidden="true"><div class="ehs" id="exhSlides"></div></div>
+    <div class="exh-hero"><div class="ehs" id="exhSlides" aria-hidden="true"></div></div>
   </div>
 </section>
 
@@ -303,14 +308,35 @@
     function applyRatio(img){if(img.complete&&img.naturalWidth)setRatio(img);else img.addEventListener('load',function(){setRatio(img);},{once:true});}
     applyRatio(slides[0]);
     if(slides.length<2)return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var i=0;
-    setInterval(function(){
+    var i=0,timer=null;
+    var PAUSE='\u275A\u275A',PLAY='\u25B6\uFE0E';
+    var ctr=document.createElement('div');
+    ctr.className='hs-controls';
+    ctr.innerHTML='<button class="hs-btn hs-prev" type="button" aria-label="Previous image">\u2039</button><button class="hs-btn hs-toggle" type="button" aria-label="Pause slideshow">'+PAUSE+'</button><button class="hs-btn hs-next" type="button" aria-label="Next image">\u203A</button>';
+    box.parentElement.appendChild(ctr);
+    var btnToggle=ctr.querySelector('.hs-toggle');
+    function show(n){
       slides[i].classList.remove('is-active');
-      i=(i+1)%slides.length;
+      i=(n+slides.length)%slides.length;
       slides[i].classList.add('is-active');
       applyRatio(slides[i]);
-    },4000);
+    }
+    function start(){
+      if(timer)return;
+      timer=setInterval(function(){show(i+1);},4000);
+      btnToggle.textContent=PAUSE;
+      btnToggle.setAttribute('aria-label','Pause slideshow');
+    }
+    function stop(){
+      clearInterval(timer);timer=null;
+      btnToggle.textContent=PLAY;
+      btnToggle.setAttribute('aria-label','Play slideshow');
+    }
+    ctr.querySelector('.hs-prev').addEventListener('click',function(){stop();show(i-1);});
+    ctr.querySelector('.hs-next').addEventListener('click',function(){stop();show(i+1);});
+    btnToggle.addEventListener('click',function(){if(timer){stop();}else{show(i+1);start();}});
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){stop();}
+    else{start();}
   })();
   (function(){
     var lb=document.querySelector('.cert-lb'), img=lb.querySelector('img'),

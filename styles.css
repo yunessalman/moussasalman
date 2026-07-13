@@ -37,7 +37,7 @@ body{
   letter-spacing:.01em;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -254,7 +254,7 @@ section{padding-block:clamp(56px,9vw,120px)}
 .lb-ed{display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(237,231,218,.12);font-family:var(--mono)}
 .lb-ed .n{color:rgba(237,231,218,.45);font-size:11px;letter-spacing:.04em}
 .lb-ed .sz{color:rgba(237,231,218,.92);font-size:13px;letter-spacing:.03em}
-.lb-ed .pr{color:#fff;font-weight:700;font-size:13px;letter-spacing:.03em;white-space:nowrap;justify-self:end}
+.lb-ed .pr{color:#fff;font-family:var(--sans);font-weight:700;font-size:16px;letter-spacing:.02em;white-space:nowrap;justify-self:end;font-feature-settings:"tnum"}
 .lb-ed .ed-inq{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,231,218,.7);text-decoration:none;border:1px solid rgba(237,231,218,.28);padding:5px 10px;border-radius:999px;white-space:nowrap;transition:color .25s,border-color .25s,background .25s}
 .lb-ed .ed-inq:hover{color:var(--ink);background:#EDE7DA;border-color:#EDE7DA}
 .lb-enquire{margin-top:22px}

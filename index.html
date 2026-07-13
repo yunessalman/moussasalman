@@ -208,7 +208,7 @@
       <div>
         <h4>Connect</h4>
         <a href="contact.html">Contact</a>
-        <a href="/cdn-cgi/l/email-protection#167f787079567b796365657765777a7b77783875797b"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8d5d7cdcbcbd9cbd9d4d5d9d696dbd7d5">[email&#160;protected]</span></a>
+        <a href="mailto:info@moussasalman.com">info@moussasalman.com</a>
         <a href="https://www.instagram.com/moussasalmanart/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/MoussaSalmanArt/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://www.linkedin.com/in/moussa-salman/" target="_blank" rel="noopener">LinkedIn</a>
@@ -230,7 +230,7 @@
   <div class="lb-cap"><span class="t"></span> <span class="y"></span></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="site.js?v=2"></script>
+<script src="site.js?v=2"></script>
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
   (function(){
@@ -284,7 +284,7 @@
     }
     btnPrev.addEventListener('click',function(){stop();show(i-1);});
     btnNext.addEventListener('click',function(){stop();show(i+1);});
-    btnToggle.addEventListener('click',function(){timer?stop():start();});
+    btnToggle.addEventListener('click',function(){if(timer){stop();}else{show(i+1);start();}});
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){stop();}
     else{start();}
   })();

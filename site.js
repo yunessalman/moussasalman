@@ -39,6 +39,16 @@ window.ARTWORKS = [
   {n:'35', t:'Stay Safe',             y:2020, ar:1.333},
   {n:'36', t:'Alien Refugee',         y:2019, ar:1.333},
   {n:'37', t:'Struggle',              y:2019, ar:1.333},
+  {n:'38', t:'Do You See What I See', y:2024, ar:1.131},
+  {n:'39', t:'Dancing Alone',         y:2024, ar:1.000},
+  {n:'40', t:'To Hell with Your Thoughts', y:2021, ar:1.500},
+  {n:'41', t:'Circle of Life',        y:2023, ar:1.498},
+  {n:'42', t:'Talking to the Wall',   y:2022, ar:1.500},
+  {n:'43', t:'Crowded Terrace',       y:2026, ar:1.000},
+  {n:'44', t:'Dancing Shadows',       y:2025, ar:1.792},
+  {n:'45', t:'Fly with Me',           y:2026, ar:1.204},
+  {n:'46', t:'Nothing Seems Clear',   y:2025, ar:1.000},
+  {n:'47', t:'The Competition',       y:2024, ar:1.370},
 ];
 
 /* 6 limited editions — fixed size ladder + price ladder, shared by every work.
@@ -88,7 +98,11 @@ window.fmtUSD = function(n){ return '$'+n.toLocaleString('en-US'); };
     var grid=document.getElementById('gallery');
     if(!grid)return;
     var html='';
-    window.ARTWORKS.forEach(function(a,i){
+    /* random order on every visit */
+    var order=window.ARTWORKS.map(function(a,i){return i;});
+    for(var k=order.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var tmp=order[k];order[k]=order[j];order[j]=tmp;}
+    order.forEach(function(i){
+      var a=window.ARTWORKS[i];
       var eds=window.editionsFor(a);
       /* deterministic pick of one of the 6 editions, stable per painting */
       var pick=eds[(parseInt(a.n,10)*7+3)%6];
