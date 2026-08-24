@@ -49,7 +49,7 @@ window.ARTWORKS = [
   {n:'45', t:'Fly with Me',           y:2026, ar:1.204},
   {n:'46', t:'Nothing Seems Clear',   y:2025, ar:1.000},
   {n:'47', t:'The Competition',       y:2024, ar:1.370},
-  {n:'48', t:'Next, AI-Human',        y:2026, ar:1.167},
+  {n:'48', t:'Next AI-Human',        y:2026, ar:1.167},
   {n:'49', t:'The Yacht',             y:2026, ar:1.200},
   {n:'50', t:'Crossing Visions',      y:2026, ar:1.167},
 ];
